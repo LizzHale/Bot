@@ -1,0 +1,65 @@
+#!/usr/bin/python
+
+import re
+
+import contractions
+
+# TO DO - convert unicode to ascii
+def convert_unicode(text):
+    pass
+
+# TO DO - remove links
+def remove_links(text):
+    pass
+
+# TO DO - remove emails
+def remove_emails(text):
+    pass
+
+# TO DO - will need to remove the user
+def remove_usernames(text):
+    pass
+
+def convert_lowercase(text):
+    return text.lower()
+
+def remove_punctuation(text):
+    return re.sub(r"[^a-zA-Z0-9\s]", " ", text)
+
+# strip whitespace from the start and end of the "line" and convert 
+# multiple sequential whitespace into one
+def normalize_whitespace(text):
+    no_sequential = re.sub(r"[\s]{2,}", " ", text)
+    strip = no_sequential.strip()
+    return strip
+
+def contraction(match):
+    # when called, will find the expanded contraction from the contractions dictionary and return the expanded contraction
+    contdict = contractions.contractions
+    if contdict.get(match.group()):
+        return contdict[match.group()]
+    else:
+        return match.group()
+
+def expand_contractions(text):
+    # look for items 
+    replacementpattern = re.compile(r"[a-z]*'[a-z]*")
+    another = replacementpattern.sub(contraction, text)
+    return another
+
+
+def clean(text):
+    # convert_unicode(text)
+    # remove_links(text)
+    # remove_emails(text)
+    # remove_usernames(text)
+    lowered = convert_lowercase(text)
+    expanded = expand_contractions(lowered)
+    no_punc = remove_punctuation(expanded)
+    whited = normalize_whitespace(no_punc)
+    return whited
+
+
+
+# if __name__ = '__main__':
+#     clean()
