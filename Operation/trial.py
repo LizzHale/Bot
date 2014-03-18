@@ -71,7 +71,3 @@ while 1:
             msg = "hello"
             s.send("PRIVMSG %s %s\r\n" % (senderNick, msg))
 
-        if line[1]=="PRIVMSG" and line[3]==":quit":
-            quitmsg = "Gone to have lunch"
-            s.send("QUIT %s" % quitmsg)
-
