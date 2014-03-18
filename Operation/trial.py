@@ -20,9 +20,8 @@ s.connect((HOST, PORT))
 s.send("NICK %s\r\n" % NICK)
 # The USER command is used at the beginning of a connection
 # to specify the username, hostname, and realname of a new user.
-# removed "bla" - it seems to be some sort of flag/mode but I can't 
-# find a description and it works fine witout it. 
-s.send("USER %s %s :%s\r\n" % (IDENT, HOST, REALNAME))
+# Turns out that bla is needed for registration 
+s.send("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME))
 # TO DO - add a JOIN command: s.send("JOIN %s\r\n" % CHANNEL) ???
 # Should receive back a RPL_TOPIC (channel's topic) and RPL_NAMREPLY (list of users)
 s.send("JOIN %s\r\n" % CHANNEL)
