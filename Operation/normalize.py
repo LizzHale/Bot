@@ -22,6 +22,14 @@ def remove_emails(text):
 def remove_usernames(text):
     pass
 
+# TO DO - is this necessary? if yes, then perform this in organize.py
+def remove_words_less_than_two_characters(text):
+    pass
+
+# TO DO - is this necessary? if yes, then perform this in organize.py
+def remove_stopwords(text):
+    pass
+
 def convert_lowercase(text):
     return text.lower()
 
@@ -68,5 +76,5 @@ def tokenize(string):
     return string
 
 
-# if __name__ = '__main__':
-#     clean()
+if __name__ == '__main__':
+    clean()
