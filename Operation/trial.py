@@ -7,6 +7,8 @@ PORT=6667
 NICK="Bobnut"
 IDENT="bobnut"
 REALNAME="Bob DeKokosnoot"
+# readbuffer is needed because you might not be able to read complete IRC commands
+# from the server. 
 readbuffer=""
 CHANNEL="##hbtestbot"
 
@@ -18,8 +20,9 @@ s.connect((HOST, PORT))
 s.send("NICK %s\r\n" % NICK)
 # The USER command is used at the beginning of a connection
 # to specify the username, hostname, and realname of a new user.
-# what is bla?
-s.send("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME))
+# removed "bla" - it seems to be some sort of flag/mode but I can't 
+# find a description and it works fine witout it. 
+s.send("USER %s %s :%s\r\n" % (IDENT, HOST, REALNAME))
 # TO DO - add a JOIN command: s.send("JOIN %s\r\n" % CHANNEL) ???
 # Should receive back a RPL_TOPIC (channel's topic) and RPL_NAMREPLY (list of users)
 s.send("JOIN %s\r\n" % CHANNEL)
@@ -28,6 +31,7 @@ while 1:
     # at first, readbuffer is an empty string. Each time through the while loop
     # readbuffer is the last item from the temp list.
     # It is concatenated to the incoming data from the host
+    # why 1024?
     readbuffer = readbuffer+s.recv(1024)
     # string.split - splits readbuffer on each newline and formats in a list
     temp = readbuffer.split("\n")
