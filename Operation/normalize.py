@@ -4,6 +4,8 @@ import re
 
 from nltk.tokenize import WhitespaceTokenizer
 
+import nltk
+
 import contractions
 
 # TO DO - convert unicode to ascii
@@ -26,9 +28,16 @@ def remove_usernames(text):
 def remove_words_less_than_two_characters(text):
     pass
 
+
+
 # TO DO - is this necessary? if yes, then perform this in organize.py
-def remove_stopwords(text):
-    pass
+def remove_stopwords(list):
+    stopwords = nltk.corpus.stopwords.words('english')
+    no_stopwords = []
+    for each in list:
+        if each not in stopwords:
+            no_stopwords.append(each)
+    return no_stopwords
 
 def convert_lowercase(text):
     return text.lower()
