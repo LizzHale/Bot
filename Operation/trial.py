@@ -9,7 +9,7 @@ IDENT="bobnut"
 REALNAME="Bob DeKokosnoot"
 readbuffer=""
 CHANNEL="##hbtestbot"
-ID="~bobnut@c-50-184-42-188.hsd1.ca.comcast.net"
+
 
 s=socket.socket()
 # The CONNECT command is used to establish a new connection with a server
@@ -43,24 +43,35 @@ while 1:
         # split on whitespace - returns a list
         line = line.split()
 
-
         # if the server "pings" my bot, it needs to respond with
         # pong and whatever the server ping'd. 
         # this tells the server that I am active so it won't kick me off
         # PING messages look like this: PING :something.freenode.net
         if line[0]=="PING":
+            print "PONG %s\r\n" % line[1]
+            # FYI send returns the number of bytes sent.
             sent = s.send("PONG %s\r\n" % line[1])
 
+        # when a message to the channel is received, the bot will say hello
+        # TO DO obviously I don't want it responding "hello" every single time
         if line[1]=="PRIVMSG" and line[2]==CHANNEL:
-            msg = "hello"
-            sent = s.send("PRIVMSG %s %s\r\n" % (CHANNEL, msg))
+            # Added quit command to shutdown the bot
+            if line[3]==":quit":
+                s.send("QUIT \r\n")
+            else:
+                msg = "hello"
+                s.send("PRIVMSG %s %s\r\n" % (CHANNEL, msg))
 
+        # Can respond to "private messages" and respond directly back to the speaker
         if line[1]=="PRIVMSG" and line[2]==NICK:
-            sentBy = line[0].split("!", 1)
-            senderNick = sentBy[0].strip(":")
-            print sentBy
-            print senderNick
+            # line 0 is the originator parameter
+            # in this next line, we split on ! taking the left half
+            # and then strip the preceeding colon to get the sender's nickname
+            senderNick = line[0].split("!", 1)[0].strip(":")
             msg = "hello"
             s.send("PRIVMSG %s %s\r\n" % (senderNick, msg))
 
-# TO DO add a QUIT command
+        if line[1]=="PRIVMSG" and line[3]==":quit":
+            quitmsg = "Gone to have lunch"
+            s.send("QUIT %s" % quitmsg)
+
