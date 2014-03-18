@@ -2,6 +2,8 @@
 
 import re
 
+from nltk.tokenize import WhitespaceTokenizer
+
 import contractions
 
 # TO DO - convert unicode to ascii
@@ -59,6 +61,11 @@ def clean(text):
     whited = normalize_whitespace(no_punc)
     return whited
 
+# takes a string and divides all the words by whitespace and outputs a list
+def tokenize(string):
+    tokenizer = WhitespaceTokenizer()
+    string = tokenizer.tokenize(string)
+    return string
 
 
 # if __name__ = '__main__':

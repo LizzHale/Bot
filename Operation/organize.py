@@ -1,5 +1,4 @@
 #!/usr/bin/python
-from nltk.tokenize import WhitespaceTokenizer
 
 import normalize
 
@@ -18,17 +17,12 @@ def list_of_statements():
     with open("../Datasets/pos.txt") as pos:
         for line in pos:
             positive = normalize.clean(line)
-            positive = tokenize(positive)
+            positive = normalize.tokenize(positive)
             alist.append((positive, "positive"))
 
     return alist
 
 
-# takes a string and divides all the words by whitespace and outputs a list
-def tokenize(string):
-    tokenizer = WhitespaceTokenizer()
-    string = tokenizer.tokenize(string)
-    return string
 
 
 
