@@ -102,6 +102,8 @@ class classifier:
             if probs[cat]*self.getthreshold(best)>probs[best]: 
                 return default
             return best
+    def classify_many(self, featuresets):
+        return [self.classify(fs) for fs in featuresets]
 
 
 class naivebayes(classifier):
