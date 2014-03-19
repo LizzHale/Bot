@@ -81,8 +81,8 @@ def clean(text):
 # takes a string and divides all the words by whitespace and outputs a list
 def tokenize(string):
     tokenizer = WhitespaceTokenizer()
-    string = tokenizer.tokenize(string)
-    return string
+    list = tokenizer.tokenize(string)
+    return list
 
 
 if __name__ == '__main__':
