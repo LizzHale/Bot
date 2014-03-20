@@ -1,11 +1,14 @@
-import re
-import math
 
 import normalize
 
 def getwords(doc):
     normalized = normalize.clean(doc)
     tokenized = normalize.tokenize(normalized)
+    # Things to consider:
+    # Accuracy is 59.8% when stopwords are removed (compare to 59.1%)
+    # However, the classifier predicts "I'm not happy" as positive with
+    # stopwords removed
+    # and "negative" when they are left in. 
     words = normalize.remove_stopwords(tokenized)
     # Return the unique set of words only
     return dict([(w,1) for w in words])
