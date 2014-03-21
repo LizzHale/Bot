@@ -15,18 +15,19 @@ class bot:
         elif msg[0]=="PING":
             return self.pong(msg)
             
-
+        else:
+            return False
 
     def classification(self, msg):
         polarity = self.classifier.classify(msg, default="neutral")
         # TODO - check how many features and if there are
         # less than two features say: "Tell me more."
         if polarity == "positive":
-            reply = "You're message was positive"
+            reply = "Your message was positive"
             return "PRIVMSG %s %s\r\n" % (self.channel, reply)
-            
+
         elif polarity == "negative":
-            reply = "You're message was negative"
+            reply = "Your message was negative"
             return "PRIVMSG %s %s\r\n" % (self.channel, reply)
 
         elif polarity == "neutral":
