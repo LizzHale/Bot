@@ -1,4 +1,3 @@
-
 import normalize
 
 def getwords(doc):
@@ -21,32 +20,41 @@ class classifier:
         self.fc={}
         # Counts the documents in each category
         self.cc={}
+        # This is the function that cleans the messages and returns 
+        # The features
         self.getfeatures=getfeatures
-        # Increase the count of a feature/category pair
+
+    # Increase the count of a feature/category pair
     def incf(self,f,cat):
         self.fc.setdefault(f,{})
         self.fc[f].setdefault(cat,0)
         self.fc[f][cat]+=1
+
     #Increase the count of a category
     def incc(self,cat):
         self.cc.setdefault(cat,0)
         self.cc[cat]+=1
+
     # The number of times a feature has appeared in a category
     def fcount(self,f,cat):
         if f in self.fc and cat in self.fc[f]:
             return float(self.fc[f][cat])
         return 0.0
+
     # The number of items in a category
     def catcount(self,cat):
         if cat in self.cc:
             return float(self.cc[cat])
         return 0
+
     # The total number of items
     def totalcount(self):
         return sum(self.cc.values())
+
     # The list of all categories
     def categories(self):
         return self.cc.keys()
+
     # Takes a document and a classification. It uses the 
     # getfeatures method to break the item into its separate features
     # The calls incf to increase the counts for this classification for every feature
@@ -65,6 +73,7 @@ class classifier:
         cl.train('buy pharmaceuticals now', 'bad')
         cl.train('make quick money at the online casino', 'bad')
         cl.train('the quick brown fox jumps', 'good')
+    
     # Calculates the probability that a word is in a particular category
     def fprob(self,f,cat):
         if self.catcount(cat)==0: 
@@ -82,12 +91,15 @@ class classifier:
         # Calculate the weight average
         bp = ((weight*ap) + (totals*basicprob))/(weight+totals)
         return bp
+
     def setthreshold(self,cat,t):
         self.thresholds[cat]=t
+
     def getthreshold(self,cat):
         if cat not in self.thresholds:
             return 1.0
         return self.thresholds[cat]
+
     def classify(self,item,default=None):
         probs={}
         # Find the category with the highest probability
@@ -105,6 +117,7 @@ class classifier:
             if probs[cat]*self.getthreshold(best)>probs[best]: 
                 return default
             return best
+
     def classify_many(self, featuresets):
         return [self.classify(fs) for fs in featuresets]
 

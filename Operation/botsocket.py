@@ -3,6 +3,8 @@
 import socket
 import sys
 
+import bot
+
 
 HOST="irc.freenode.net"
 PORT=6667
@@ -15,18 +17,22 @@ def bot_socket():
     # readbuffer is needed because you might not be able to read complete IRC commands
     # from the server. 
     readbuffer=""
+
+    bob = bot.bot(HOST, PORT, NICK, IDENT, REALNAME, CHANNEL)
+
     s=socket.socket()
+
     # The CONNECT command is used to establish a new connection with a server
     s.connect((HOST, PORT))
     # The NICK command is used to give user a nickname 
-    s.send("NICK %s\r\n" % NICK)
+    s.send("NICK %s\r\n" % bob.nickname)
     # The USER command is used at the beginning of a connection
     # to specify the username, hostname, and realname of a new user.
     # Turns out that bla is needed for registration 
-    s.send("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME))
+    s.send("USER %s %s bla :%s\r\n" % (bob.identity, HOST, bob.realname))
     # TO DO - add a JOIN command: s.send("JOIN %s\r\n" % CHANNEL) ???
     # Should receive back a RPL_TOPIC (channel's topic) and RPL_NAMREPLY (list of users)
-    s.send("JOIN %s\r\n" % CHANNEL)
+    s.send("JOIN %s\r\n" % bob.channel)
 
     while 1:
         # at first, readbuffer is an empty string. Each time through the while loop
