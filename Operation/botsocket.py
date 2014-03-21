@@ -18,7 +18,8 @@ def bot_socket():
     # from the server. 
     readbuffer=""
 
-    bob = bot.bot(HOST, PORT, NICK, IDENT, REALNAME, CHANNEL)
+    # Instantiate the bot
+    bob = bot.bot(NICK, IDENT, REALNAME, CHANNEL)
 
     s=socket.socket()
 
