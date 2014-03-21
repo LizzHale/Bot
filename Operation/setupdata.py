@@ -30,4 +30,3 @@ def train(training_set):
 
 def test(classifier, test_set):
     return classifier.accuracy(test_set)
-
