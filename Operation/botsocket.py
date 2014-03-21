@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-import sys
 import socket
+import sys
 
 
 HOST="irc.freenode.net"

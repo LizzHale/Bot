@@ -108,6 +108,13 @@ class classifier:
     def classify_many(self, featuresets):
         return [self.classify(fs) for fs in featuresets]
 
+    def accuracy(self, featuresets):
+        results = self.classify_many([fs for (fs,l) in featuresets])
+        correct = [l==r for ((fs,l), r) in zip(featuresets, results)]
+        if correct:
+            return float(sum(correct))/len(correct)
+        else:
+            return 0
 
 class naivebayes(classifier):
     def docprob(self, item, cat):
