@@ -10,11 +10,11 @@ class bot:
     def receive_send(self, msg):
 
         if msg[1]=="PRIVMSG" and msg[2]==self.channel:
-            return self.classification(msg[3])
+            return self.classification(" ".join(msg[3:]))
 
         elif msg[1]=="PRIVMSG" and msg[2]==self.nickname:
             senderNick = msg[0].split("!", 1)[0].strip(":")
-            return self.private_message(msg[3], senderNick)
+            return self.private_message(" ".join(msg[3:]), senderNick)
 
         elif msg[0]=="PING":
             return self.pong(msg)

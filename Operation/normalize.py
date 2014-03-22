@@ -24,7 +24,7 @@ def remove_emails(text):
 def remove_usernames(text):
     pass
 
-# TO DO - is this necessary? if yes, then perform this in organize.py
+# TO DO - remove words less than two characters
 def remove_words_less_than_two_characters(text):
     pass
 

@@ -58,8 +58,9 @@ def bot_socket():
             line = line.split()
             # send all messages to the bot to process
             reply = bob.receive_send(line)
-
             if reply:
+
+                print bob.classifier.getfeatures(" ".join(line[3:]))
                 print reply
                 s.send(reply)
             
