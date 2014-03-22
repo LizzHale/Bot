@@ -62,8 +62,7 @@ def bot_socket():
             if reply:
                 print reply
                 s.send(reply)
-            else: 
-                continue
+            
             
 
 

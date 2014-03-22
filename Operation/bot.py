@@ -24,15 +24,15 @@ class bot:
         # less than two features say: "Tell me more."
         if polarity == "positive":
             reply = "Your message was positive"
-            return "PRIVMSG %s %s\r\n" % (self.channel, reply)
+            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
 
         elif polarity == "negative":
             reply = "Your message was negative"
-            return "PRIVMSG %s %s\r\n" % (self.channel, reply)
+            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
 
         elif polarity == "neutral":
             reply = "Is that a bad thing or a good thing?"
-            return "PRIVMSG %s %s\r\n" % (self.channel, reply)
+            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
             
 
     def pong(self, msg):
