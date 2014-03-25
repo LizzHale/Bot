@@ -29,8 +29,6 @@ def remove_words_less_than_two_characters(text):
     pass
 
 
-
-# TO DO - is this necessary? if yes, then perform this in organize.py
 def remove_stopwords(list):
     stopwords = nltk.corpus.stopwords.words('english')
     no_stopwords = []

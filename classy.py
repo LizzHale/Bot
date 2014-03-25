@@ -2,9 +2,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.sql import func
 
 import config
 import normalize
+from tables import featurecount, session, categorycount
 
 def getwords(doc):
     normalized = normalize.clean(doc)
@@ -30,58 +32,60 @@ class classifier:
         # The features
         self.getfeatures=getfeatures
 
-    # Opens a database for this classifer and creates tables if necessary
-    def setdb(self, database):
-        self.engine = create_engine(config.DB_URL, echo=False) 
-        self.session = self.engine.scoped_session(sessionmaker(bind=engine,
-                         autocommit = False,
-                         autoflush = False))
-
-        self.Base = declarative_base()
-        self.Base.query = session.query_property()
-        
     # Increase the count of a feature/category pair
     def incf(self,f,cat):
-        count = self.fcount(f, cat)
-        if count == 0:
-            self.conn.execute("INSERT INTO fc VALUES ('%s', '%s', 1)" % (f, cat))
+        ## query here, get object
+        fc = session.query(featurecount).filter_by(feature=f, category=cat).all()
+        # Test if fc will ever be False. The query will return an empty list
+        if fc:
+            fc[0].count += 1
         else:
-            self.conn.execute("UPDATE fc SET count=%d WHERE feature='%s' AND category='%s'" % (count+1, f, cat))
+            #create a new one!
+            new = featurecount(feature=f, category=cat, count=1)
+            session.add(new)
 
     #Increase the count of a category
     def incc(self,cat):
-        count = self.catcount(cat)
-        if count == 0:
-            self.conn.execute("INSERT INTO cc VALUES ('%s', 1)" % (cat))
+        cc = session.query(categorycount).filter_by(category=cat).all()
+        if cc:
+            cc[0].count += 1
         else:
-            self.conn.execute("UPDATE cc SET count=%d WHERE category='%s'" % (count+1, cat))
+            new = categorycount(category=cat, count=1)
+            session.add(new)
 
     # The number of times a feature has appeared in a category
     def fcount(self,f,cat):
-        res = self.conn.execute("SELECT count FROM fc WHERE feature='%s' AND category='%s'" % (f, cat)).fetchone()
-        if res == None:
-            return 0
+        feature = session.query(featurecount).filter_by(feature=f, category=cat).all()
+        if feature:
+            return feature[0].count
         else:
-            return float(res[0])
+            return 0
+    
 
     # The number of items in a category
     def catcount(self,cat):
-        res = self.conn.execute('SELECT count FROM cc WHERE category="%s"' %(cat)).fetchone()
-        if res == None:
-            return 0
+        category = session.query(categorycount).filter_by(category=cat).all()
+        if category:
+            return category[0].count
         else:
-            return float(res[0])
+            return 0
+
     # The total number of items
     def totalcount(self):
-        res = self.conn.execute('SELECT sum(count) FROM cc').fetchone()
-        if res == None:
+        total = session.query(func.sum(categorycount.count)).all()
+        if total:
+            return total
+        else:
             return 0
-        return res[0]
 
     # The list of all categories
     def categories(self):
-        cur = self.conn.execute('SELECT category FROM cc')
-        return [d[0] for d in cur]
+        category_list = []
+        table = session.query(categorycount).all()
+        for each in table:
+            cat = session.query(categorycount).get(each.category)
+            category_list.append(cat)
+        return category_list
 
     # Takes a document and a classification. It uses the 
     # getfeatures method to break the item into its separate features
@@ -94,9 +98,6 @@ class classifier:
             self.incf(f,cat)
         #Increment the count for this category
         self.incc(cat)
-    
-    def commit(self):
-        self.conn.commit()
 
 
     def sampletrain(cl):

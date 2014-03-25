@@ -1,8 +1,6 @@
-import config
-
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 import config
@@ -15,18 +13,18 @@ session = scoped_session(sessionmaker(bind=engine,
 Base = declarative_base()
 Base.query = session.query_property()
 
-class FC(Base):
-    __tablename__ = "fc" 
+class featurecount(Base):
+    __tablename__ = "featurecount" 
     id = Column(Integer, primary_key=True)
-    feature = Column(Integer, nullable=False)
+    feature = Column(String, nullable=False)
     category = Column(String(64), nullable=False)
-    count = Column(Integer, nullable=False)
+    count = Column(Float, nullable=False)
     
-class CC(Base):
-    __tablename__ = "cc"
-    id = Column(Integer, primary_key=True)
+class categorycount(Base):
+    __tablename__ = "categorycount"
+    id= Column(Integer, primary_key=True)
     category = Column(String(64), nullable=False)
-    count = Column(Integer, nullable=False)
+    count = Column(Float, nullable=False)
 
 def create_tables():
     Base.metadata.create_all(engine)

@@ -5,6 +5,7 @@ import sys
 
 import bot
 import setupdata
+from tables import session
 
 
 HOST="irc.freenode.net"
@@ -13,7 +14,7 @@ NICK="Bobnut"
 IDENT="bobnut"
 REALNAME="Bob DeKokosnoot"
 CHANNEL="##hbtestbot"
-CLASSIFIER=setupdata.getclassifier('bob.db')
+CLASSIFIER=setupdata.getclassifier()
 
 def bot_socket():
     # readbuffer is needed because you might not be able to read complete IRC commands

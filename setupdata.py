@@ -1,9 +1,11 @@
 import classy
+import config
 import normalize
+from tables import session
 
 def get_list(polarity):
     polarityList = []
-    with open("../Datasets/%s.txt" % polarity[:3]) as data:
+    with open("Datasets/%s.txt" % polarity[:3]) as data:
         for line in data:
             tupledPolarity = (line, polarity)
             polarityList.append(tupledPolarity)       
@@ -21,17 +23,20 @@ def get_test_set():
     test_set = negative[int(len(negative)*.75):] + positive[int(len(positive)*.75):]
     return test_set
 
-def train(classifier, training_set):   
+def train(classifier, training_set, database, session):   
     # it's possible to set the threshold but experiments show that a threshold of 2 produces 20% accuracy
     for each in training_set:
-        classifier.train(each[0], each[1])
-    classifier.commit()
-    return classifier
+        classifier.train(each[0], each[1])     
+    session.commit()
 
 def test(classifier, test_set):
     return classifier.accuracy(test_set)
 
-def getclassifier(database):
+def getclassifier():
     classifier = classy.naivebayes(classy.getwords)
-    classifier.setdb(database)
     return classifier
+
+if __name__ == "__main__":
+    cl = getclassifier()
+    training = get_training_set()
+    train(cl, training, config.DB_URL, session)
