@@ -1,5 +1,9 @@
-import sqlite3
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import sessionmaker, scoped_session
 
+import config
 import normalize
 
 def getwords(doc):
@@ -28,10 +32,14 @@ class classifier:
 
     # Opens a database for this classifer and creates tables if necessary
     def setdb(self, database):
-        self.conn = sqlite3.connect(database)
-        self.conn.execute("CREATE TABLE IF NOT EXISTS fc(feature, category, count)")
-        self.conn.execute("CREATE TABLE IF NOT EXISTS cc(category, count)")
+        self.engine = create_engine(config.DB_URL, echo=False) 
+        self.session = self.engine.scoped_session(sessionmaker(bind=engine,
+                         autocommit = False,
+                         autoflush = False))
 
+        self.Base = declarative_base()
+        self.Base.query = session.query_property()
+        
     # Increase the count of a feature/category pair
     def incf(self,f,cat):
         count = self.fcount(f, cat)

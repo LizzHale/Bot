@@ -33,7 +33,7 @@ class bot:
         elif polarity == "negative":
             reply = "Your message was negative"
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
-
+        # TO DO - Use this to continue to train the bot: 
         elif polarity == "neutral":
             reply = "Is that a bad thing or a good thing?"
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)

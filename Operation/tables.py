@@ -30,8 +30,6 @@ class CC(Base):
 
 def create_tables():
     Base.metadata.create_all(engine)
-    session.add()
-    session.commit()
 
 if __name__ == "__main__":
     create_tables()
