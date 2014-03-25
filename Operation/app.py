@@ -1,8 +1,12 @@
+import os
+
 from flask import Flask, render_template, request, redirect, session, url_for, flash
+
+import config
 
 
 app = Flask(__name__)
-app.secret_key = "shhhhthisisasecret"
+app.config.from_object(config)
 
 @app.route("/")
 def index():

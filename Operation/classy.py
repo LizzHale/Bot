@@ -1,3 +1,5 @@
+import sqlite3
+
 import normalize
 
 def getwords(doc):
@@ -24,36 +26,54 @@ class classifier:
         # The features
         self.getfeatures=getfeatures
 
+    # Opens a database for this classifer and creates tables if necessary
+    def setdb(self, database):
+        self.conn = sqlite3.connect(database)
+        self.conn.execute("CREATE TABLE IF NOT EXISTS fc(feature, category, count)")
+        self.conn.execute("CREATE TABLE IF NOT EXISTS cc(category, count)")
+
     # Increase the count of a feature/category pair
     def incf(self,f,cat):
-        self.fc.setdefault(f,{})
-        self.fc[f].setdefault(cat,0)
-        self.fc[f][cat]+=1
+        count = self.fcount(f, cat)
+        if count == 0:
+            self.conn.execute("INSERT INTO fc VALUES ('%s', '%s', 1)" % (f, cat))
+        else:
+            self.conn.execute("UPDATE fc SET count=%d WHERE feature='%s' AND category='%s'" % (count+1, f, cat))
 
     #Increase the count of a category
     def incc(self,cat):
-        self.cc.setdefault(cat,0)
-        self.cc[cat]+=1
+        count = self.catcount(cat)
+        if count == 0:
+            self.conn.execute("INSERT INTO cc VALUES ('%s', 1)" % (cat))
+        else:
+            self.conn.execute("UPDATE cc SET count=%d WHERE category='%s'" % (count+1, cat))
 
     # The number of times a feature has appeared in a category
     def fcount(self,f,cat):
-        if f in self.fc and cat in self.fc[f]:
-            return float(self.fc[f][cat])
-        return 0.0
+        res = self.conn.execute("SELECT count FROM fc WHERE feature='%s' AND category='%s'" % (f, cat)).fetchone()
+        if res == None:
+            return 0
+        else:
+            return float(res[0])
 
     # The number of items in a category
     def catcount(self,cat):
-        if cat in self.cc:
-            return float(self.cc[cat])
-        return 0
-
+        res = self.conn.execute('SELECT count FROM cc WHERE category="%s"' %(cat)).fetchone()
+        if res == None:
+            return 0
+        else:
+            return float(res[0])
     # The total number of items
     def totalcount(self):
-        return sum(self.cc.values())
+        res = self.conn.execute('SELECT sum(count) FROM cc').fetchone()
+        if res == None:
+            return 0
+        return res[0]
 
     # The list of all categories
     def categories(self):
-        return self.cc.keys()
+        cur = self.conn.execute('SELECT category FROM cc')
+        return [d[0] for d in cur]
 
     # Takes a document and a classification. It uses the 
     # getfeatures method to break the item into its separate features
@@ -66,6 +86,10 @@ class classifier:
             self.incf(f,cat)
         #Increment the count for this category
         self.incc(cat)
+    
+    def commit(self):
+        self.conn.commit()
+
 
     def sampletrain(cl):
         cl.train('Nobody owns the water.', 'good')

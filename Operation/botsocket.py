@@ -13,7 +13,7 @@ NICK="Bobnut"
 IDENT="bobnut"
 REALNAME="Bob DeKokosnoot"
 CHANNEL="##hbtestbot"
-CLASSIFIER=setupdata.train(setupdata.get_training_set())
+CLASSIFIER=setupdata.getclassifier('bob.db')
 
 def bot_socket():
     # readbuffer is needed because you might not be able to read complete IRC commands
