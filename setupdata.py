@@ -23,10 +23,11 @@ def get_test_set():
     test_set = negative[int(len(negative)*.75):] + positive[int(len(positive)*.75):]
     return test_set
 
-def train(classifier, training_set, database, session):   
+def train(classifier, training_set, database):   
     # it's possible to set the threshold but experiments show that a threshold of 2 produces 20% accuracy
     for each in training_set:
-        classifier.train(each[0], each[1])     
+        classifier.train(each[0], each[1])   
+     
     session.commit()
 
 def test(classifier, test_set):
@@ -39,4 +40,4 @@ def getclassifier():
 if __name__ == "__main__":
     cl = getclassifier()
     training = get_training_set()
-    train(cl, training, config.DB_URL, session)
+    train(cl, training, config.DB_URL)

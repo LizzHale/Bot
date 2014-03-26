@@ -34,16 +34,18 @@ class classifier:
 
     # Increase the count of a feature/category pair
     def incf(self,f,cat):
+        print f 
+        print cat
         ## query here, get object
         fc = session.query(featurecount).filter_by(feature=f, category=cat).all()
         # Test if fc will ever be False. The query will return an empty list
+        print fc
         if fc:
             fc[0].count += 1
         else:
             #create a new one!
             new = featurecount(feature=f, category=cat, count=1)
             session.add(new)
-
     #Increase the count of a category
     def incc(self,cat):
         cc = session.query(categorycount).filter_by(category=cat).all()
@@ -52,7 +54,6 @@ class classifier:
         else:
             new = categorycount(category=cat, count=1)
             session.add(new)
-
     # The number of times a feature has appeared in a category
     def fcount(self,f,cat):
         feature = session.query(featurecount).filter_by(feature=f, category=cat).all()
@@ -72,9 +73,10 @@ class classifier:
 
     # The total number of items
     def totalcount(self):
-        total = session.query(func.sum(categorycount.count)).all()
+        # returns a tuple. (4859.0,) Why?
+        total = session.query(func.sum(categorycount.count)).one()
         if total:
-            return total
+            return total[0]
         else:
             return 0
 
@@ -83,8 +85,7 @@ class classifier:
         category_list = []
         table = session.query(categorycount).all()
         for each in table:
-            cat = session.query(categorycount).get(each.category)
-            category_list.append(cat)
+            category_list.append(str(each.category))
         return category_list
 
     # Takes a document and a classification. It uses the 
@@ -93,8 +94,11 @@ class classifier:
     # finally, it increase the total count for this classification
     def train(self,item,cat):
         features=self.getfeatures(item)
+        print features
         # Increment the count for every feature with this category
         for f in features:
+            print f 
+            print cat
             self.incf(f,cat)
         #Increment the count for this category
         self.incc(cat)
