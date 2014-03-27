@@ -30,7 +30,7 @@ def remove_words_less_than_two_characters(text):
 
 
 def remove_stopwords(list):
-    stopwords = nltk.corpus.stopwords.words('english')
+    stopwords = nltk.corpora.stopwords.words('english')
     no_stopwords = []
     for each in list:
         if each not in stopwords:
