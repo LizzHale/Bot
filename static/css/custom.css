@@ -1,0 +1,26 @@
+#delay1 {
+    position: relative;
+    transition-property: font-size, background-color, color;
+    transition-timing-function: ease-out;
+    transition-duration: 4s;
+    transition-delay: 1s;
+    font-size: 20px;
+    background-color: grey;
+    left: 5px;
+    top: 5px;
+    height: 26px;
+    color: white;
+}
+
+#delay1:hover {
+    transition-property: font-size, background-color, color;
+    transition-timing-function: ease-out;
+    transition-duration: 4s;
+    transition-delay: 2s;
+    font-size: 36px;
+    left: 5px;
+    top: 5px;
+    height: 26px;
+    background-color: white;
+    color: black;
+}
