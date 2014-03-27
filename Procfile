@@ -1,2 +1,2 @@
-web: python botsocket.py
+worker: python botsocket.py
 web: gunicorn app:app 
