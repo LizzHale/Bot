@@ -30,10 +30,10 @@ def remove_words_less_than_two_characters(text):
 
 
 def remove_stopwords(list):
-    stopwords = stopwords.words('english')
+    sw = stopwords.words('english')
     no_stopwords = []
     for each in list:
-        if each not in stopwords:
+        if each not in sw:
             no_stopwords.append(each)
     return no_stopwords
 
