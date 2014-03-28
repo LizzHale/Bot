@@ -10,7 +10,7 @@ from tables import featurecount, session, categorycount
 
 def getwords(doc):
     normalized = normalize.clean(doc)
-    tokenized = normalize.tokenize(normalized)
+    words = normalize.tokenize(normalized)
     # Things to consider:
     # Accuracy is 59.8% when stopwords are removed (compare to 59.1%)
     # However, the classifier predicts "I'm not happy" as positive with
