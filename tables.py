@@ -14,14 +14,21 @@ Base = declarative_base()
 Base.query = session.query_property()
 
 class featurecount(Base):
+    """ Tracks the feature and category combinations """
+
     __tablename__ = "featurecount" 
+
+
     id = Column(Integer, primary_key=True)
     feature = Column(String, nullable=False)
     category = Column(String(64), nullable=False)
     count = Column(Float, nullable=False)
     
 class categorycount(Base):
+    """ Tracks the features in each category """
+
     __tablename__ = "categorycount"
+    
     id= Column(Integer, primary_key=True)
     category = Column(String(64), nullable=False)
     count = Column(Float, nullable=False)

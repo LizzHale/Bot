@@ -8,7 +8,10 @@ class bot:
         self.classifier = classifier
 
     def receive_send(self, msg):
-
+        """ When a message is passed to the bot from the socket, 
+        sort the messages and pass them to the appropriate 
+        method """
+        # TO DO - Perhaps these if statements should be in a dictionary organized by conditions/keys methods/values
         if msg[1]=="PRIVMSG" and msg[2]==self.channel:
             return self.classification(" ".join(msg[3:]))
 
@@ -19,13 +22,20 @@ class bot:
         elif msg[0]=="PING":
             return self.pong(msg)
             
+        elif msg[1]=="JOIN" and msg[2]==self.channel:
+            joinerNick = msg[0].split("!", 1)[0].strip(":")
+            reply = "Hello, %s! Seen any good movies lately?" % joinerNick
+            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+
         else:
             return False
 
     def classification(self, msg):
         polarity = self.classifier.classify(msg, default="neutral")
-        # TODO - check how many features and if there are
+        # TO DO - check how many features and if there are
         # less than two features say: "Tell me more."
+        # TO DO - create multiple replies for positive and negative that the 
+        # bot can choose at random. 
         if polarity == "positive":
             reply = "Your message was positive"
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
