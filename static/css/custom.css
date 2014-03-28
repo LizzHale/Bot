@@ -1,26 +1,20 @@
-#delay1 {
-    position: relative;
-    transition-property: font-size, background-color, color;
-    transition-timing-function: ease-out;
-    transition-duration: 4s;
-    transition-delay: 1s;
-    font-size: 20px;
-    background-color: grey;
-    left: 5px;
-    top: 5px;
-    height: 26px;
-    color: white;
+#title {
+    height: 150px;
+    width: 100%;
+    background-color: #d70a16;
 }
 
-#delay1:hover {
-    transition-property: font-size, background-color, color;
-    transition-timing-function: ease-out;
-    transition-duration: 4s;
-    transition-delay: 2s;
-    font-size: 36px;
-    left: 5px;
-    top: 5px;
-    height: 26px;
-    background-color: white;
-    color: black;
+#title:hover {
+
+}
+
+#footer {
+    height: 25px;
+    width: 100%;
+    background-color: #dbdada;
+}
+
+.sidebar {
+    height: 25px;
+    width: 100%;
 }
