@@ -16,7 +16,7 @@ def getwords(doc):
     # However, the classifier predicts "I'm not happy" as positive with
     # stopwords removed
     # and "negative" when they are left in. 
-    words = normalize.remove_stopwords(tokenized)
+   #words = normalize.remove_stopwords(tokenized)
     # Return the unique set of words only
     return dict([(w,1) for w in words])
     
