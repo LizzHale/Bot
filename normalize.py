@@ -4,7 +4,7 @@ import re
 
 from nltk.tokenize import WhitespaceTokenizer
 
-import nltk
+from nltk.corpus import stopwords
 
 import contractions
 
@@ -30,7 +30,7 @@ def remove_words_less_than_two_characters(text):
 
 
 def remove_stopwords(list):
-    stopwords = nltk.corpora.stopwords.words('english')
+    stopwords = stopwords.words('english')
     no_stopwords = []
     for each in list:
         if each not in stopwords:
