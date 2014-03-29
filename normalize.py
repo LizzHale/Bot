@@ -4,12 +4,8 @@ import re
 
 from nltk.tokenize import WhitespaceTokenizer
 
-## Pull it locally and then save it. 
-
-from nltk.corpus import stopwords
-
 import contractions
-
+import stopwords
 # TO DO - convert unicode to ascii
 def convert_unicode(text):
     pass
@@ -32,7 +28,7 @@ def remove_words_less_than_two_characters(text):
 
 
 def remove_stopwords(list):
-    sw = stopwords.words('english')
+    sw = stopwords.stopwords
     no_stopwords = []
     for each in list:
         if each not in sw:
