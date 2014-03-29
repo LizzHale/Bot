@@ -1,2 +1,2 @@
 worker: python botsocket.py
-web: gunicorn app:app 
+web: newrelic-admin run-program gunicorn app:app 

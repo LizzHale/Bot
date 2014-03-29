@@ -24,8 +24,9 @@ class bot:
             
         elif msg[1]=="JOIN" and msg[2]==self.channel:
             joinerNick = msg[0].split("!", 1)[0].strip(":")
-            reply = "Hello, %s! Seen any good movies lately?" % joinerNick
-            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+            if not joinerNick == self.nickname:
+                reply = "Hello, %s! Seen any good movies lately?" % joinerNick
+                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
 
         else:
             return False

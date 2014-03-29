@@ -4,6 +4,8 @@ import re
 
 from nltk.tokenize import WhitespaceTokenizer
 
+## Pull it locally and then save it. 
+
 from nltk.corpus import stopwords
 
 import contractions

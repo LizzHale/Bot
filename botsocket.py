@@ -46,7 +46,7 @@ def bot_socket():
         readbuffer = readbuffer+s.recv(1024)
         # string.split - splits readbuffer on each newline and formats in a list
         temp = readbuffer.split("\n")
-        # removes the last item on the temp string. Not sure why though.
+      # removes the last item on the temp string. Not sure why though.
         readbuffer = temp.pop()
 
 
