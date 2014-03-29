@@ -2,6 +2,7 @@
     height: 150px;
     width: 100%;
     background-color: #d70a16;
+    box-shadow: 0px 5px 5px 0px #A0040D;
 }
 
 #title:hover {
@@ -16,17 +17,17 @@ footer {
 }
 
 .sidebar {
-    border: 2px solid black;
+    padding-top: 1px;
     width: 100%;
-    background-color: aqua;
-    transition: 0.4s ease-out;
 }
 
 .sidebar2 {
     opacity: 0;
-    background: aqua;
-    color: black;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease;
 }
+
 
 .unit-70 {
     padding-left: 10px;
@@ -36,7 +37,39 @@ footer {
     padding-right: 10px;
 }
 
-.sidebar2:hover {
-        opacity: 1;
+
+.sidebar:hover > .sidebar2 {
+    opacity: 1;
+    color: black;
+
 }
+
+.red-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  color: #FFF;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  font-size: 14px; 
+}
+
+.red-button {
+  background: #d70a16;
+}
+
+.red-button {
+  box-shadow: 0px 5px 5px 0px #A0040D;
+}
+
+.red-button:active {
+    margin-top:15px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 0px 0px #007144;
+}
+
 
