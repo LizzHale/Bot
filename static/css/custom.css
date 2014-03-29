@@ -18,8 +18,25 @@ footer {
 .sidebar {
     border: 2px solid black;
     width: 100%;
+    background-color: aqua;
+    transition: 0.4s ease-out;
+}
+
+.sidebar2 {
+    opacity: 0;
+    background: aqua;
+    color: black;
 }
 
 .unit-70 {
     padding-left: 10px;
 }
+
+.unit-30 {
+    padding-right: 10px;
+}
+
+.sidebar2:hover {
+        opacity: 1;
+}
+
