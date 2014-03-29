@@ -33,6 +33,10 @@ class categorycount(Base):
     category = Column(String(64), nullable=False)
     count = Column(Float, nullable=False)
 
+# class chatdata(Base):
+#     """ Tracks the messages being passed to the bot """
+    
+
 def create_tables():
     Base.metadata.create_all(engine)
 

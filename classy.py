@@ -12,6 +12,7 @@ from tables import featurecount, session, categorycount
 
 def getwords(doc):
     """ Normalizes and tokenizes the document. Returns a dictionary of the unique words"""
+
     normalized = normalize.clean(doc)
     tokenized = normalize.tokenize(normalized)
     # Things to consider:
@@ -180,6 +181,7 @@ class classifier:
         """ Provides the accuracy rate given a testing_set """
 
         results = self.classify_many([fs for (fs,l) in featuresets])
+        # zip function creates a tuple from two lists
         correct = [l==r for ((fs,l), r) in zip(featuresets, results)]
         if correct:
             return float(sum(correct))/len(correct)

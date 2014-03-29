@@ -18,14 +18,33 @@
             <iframe src="https://kiwiirc.com/client/irc.kiwiirc.com/?nick=yournickna|?&theme=mini##hbtestbot" style="border:0; width:100%; height:450px;"></iframe>
         </div>
         <div class="unit-30">
-            <div class="sidebar">How Bob Works</div>
-            <div class="sidebar">Features</div>
-            <div class="sidebar">Probability</div>
-            <div class="sidebar">Was Bob Mistaken?</div>
+            <!--message=message, features=features, 
+                            probability_of_negative=probability_of_negative, 
+                            probability_of_positive=probability_of_positive,
+                            classification=classification) -->
+            <div class="sidebar">
+                <h2>See How Bob Works</h2>
+                <p> {{message}} </p>
+            </div>
+            <div class="sidebar">
+                <h2>Features</h2>
+                {%for key in in features.iteritems() %}
+                    <p> {{key}} <p>
+                {% endfor %}
+            </div>
+            <div class="sidebar">
+                <h2>Probability</h2>
+                <p> Bob determined that the message was {{probability_of_negative}} likely to be negative </p>
+                <p> Bob determined that the message was {{probability_of_positive}} likely to be positive </p>
+            </div>
+            <div class="sidebar">
+                <p> Therefore, Bob determined that the message was {{classification}}</p>
+            </div>
+            <div class="sidebar">
+                <h2>Was Bob Mistaken?</h2>
+            </div>
         </div>
     </div>
-    <div class="units-row">
-        <div class="unit-100" id="footer">copyright 2014</div>
-    </div>
+    <footer>copyright 2014</footer>
 </body>
 </html>
