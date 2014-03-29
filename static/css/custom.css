@@ -8,13 +8,18 @@
 
 }
 
-#footer {
+footer {
     height: 25px;
     width: 100%;
     background-color: #dbdada;
+
 }
 
 .sidebar {
     height: 25px;
     width: 100%;
+}
+
+.unit-70 {
+    padding-left: 10px;
 }
