@@ -16,7 +16,7 @@ footer {
 }
 
 .sidebar {
-    height: 25px;
+    border: 2px solid black;
     width: 100%;
 }
 
