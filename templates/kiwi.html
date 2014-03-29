@@ -28,14 +28,14 @@
             </div>
             <div class="sidebar">
                 <h2>Features</h2>
-                {%for key in in features.iteritems() %}
+                {%for key, value in features.iteritems() %}
                     <p> {{key}} <p>
                 {% endfor %}
             </div>
             <div class="sidebar">
                 <h2>Probability</h2>
-                <p> Bob determined that the message was {{probability_of_negative}} likely to be negative </p>
-                <p> Bob determined that the message was {{probability_of_positive}} likely to be positive </p>
+                <p> Bob determined that the message was {{probability_of_negative}}% likely to be negative </p>
+                <p> Bob determined that the message was {{probability_of_positive}}% likely to be positive </p>
             </div>
             <div class="sidebar">
                 <p> Therefore, Bob determined that the message was {{classification}}</p>
