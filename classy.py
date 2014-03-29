@@ -1,3 +1,5 @@
+import math
+
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String
@@ -29,7 +31,8 @@ class classifier:
         # This is the function used to clean and tokenize the data. 
         # getfeatures will return a dictionary of the unique set of words
         self.getfeatures=getfeatures
-
+        # For the fisher classifier
+        self.minimums={}
         # The following lines are no longer needed with a database. 
         # # Counts the feature/category combinations
         # self.fc={}
@@ -115,11 +118,11 @@ class classifier:
     def sampletrain(self):  
         """ For testing purposes, a training sample """
 
-        cl.train('Nobody owns the water.', 'good')
-        cl.train('the quick rabbit jumps fences', 'good')
-        cl.train('buy pharmaceuticals now', 'bad')
-        cl.train('make quick money at the online casino', 'bad')
-        cl.train('the quick brown fox jumps', 'good')
+        self.train('Nobody owns the water.', 'good')
+        self.train('the quick rabbit jumps fences', 'good')
+        self.train('buy pharmaceuticals now', 'bad')
+        self.train('make quick money at the online casino', 'bad')
+        self.train('the quick brown fox jumps', 'good')
     
     def fprob(self,f,cat):
         """ Returns the probability that a feature is in a category """
@@ -199,6 +202,68 @@ class naivebayes(classifier):
         catprob = self.catcount(cat)/self.totalcount()
         docprob = self.docprob(item, cat)
         return docprob * catprob
+
+### TO DO - Have two bots up and running one with the Bayes and the other with the Pearsons
+### In order to continue to train, a certain number of people will need to agree that Bob was mistaken
+### Ronald (Fisher) and Thomas (Bayes)
+class fisherclassifier(classifier):
+    def cprob(self, f, cat):
+        # The frequency of this feature in this category
+        clf = self.fprob(f, cat)
+        if clf == 0: 
+            return 0
+
+        # The frequency of this feature in all the categories
+        freqsum = sum([self.fprob(f, c) for c in self.categories()])
+
+        # The probability is the frequency in this category divide by the overall frequency
+        p = clf/(freqsum)
+
+        return p
+
+    def invchi2(self, chi, df):
+        m = chi / 2.0
+        s = term = math.exp(-m)
+        for i in range(1, df//2):
+            term *= m / i
+            s += term
+        return min(s, 1.0)
+
+
+    def fisherprob(self, item, cat):
+        # Multiply all the probabilities together
+        p = 1
+        features = self.getfeatures(item)
+        for f in features:
+            p *= (self.weightedprob(f, cat, self.cprob))
+
+        # Take the natural log and multiply by -2
+        fscore = (-2)*math.log(p)
+
+        # Use the invese chi2 function to get a probability
+        return self.invchi2(fscore, len(features)*2)
+
+    def setminimums(self, cat, minim):
+        self.minimums[cat] = minim
+
+    def getminimums(self, cat):
+        if cat not in self.minimums:
+            return 0
+        return self.minimums[cat]
+
+    def classify(self, item, default=None):
+        # Loop through looking for the best result
+        best = default
+        maxim = 0.0
+        for c in self.categories():
+            p = self.fisherprob(item, c)
+            # Make sure it exceeds its minimum
+            if p > self.getminimums(c) and p > maxim:
+                best = c
+                maxim = p
+        return best
+
+ # Still has problems with Despite the rave reviews, the restaurant did not live up to its potential
 
 
 
