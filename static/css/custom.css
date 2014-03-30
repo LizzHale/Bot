@@ -12,6 +12,10 @@
     left: -175px;
 }
 
+ul.blocks-3#chat-nav {
+    margin-left: 0;
+}
+
 h2 {
     font-family:'Univers W01 63 Bold Ex Obl';
 }
