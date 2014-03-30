@@ -10,7 +10,7 @@ app.config.from_object(config)
 
 @app.route("/")
 def index():
-    return redirect(url_for("classifiers"))
+    return redirect(url_for("about"))
 
 @app.route("/classifiers")
 def classifiers():
@@ -29,9 +29,13 @@ def classifiers():
 def chat():
     return render_template("chat.html")
 
-@app.rout("/about")
+@app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/maker")
+def maker():
+    return render_template("maker.html")
 
 
 if __name__ == "__main__":

@@ -26,13 +26,13 @@
             <iframe src="https://kiwiirc.com/client/irc.kiwiirc.com/?nick=yournickna|?&theme=mini##hbtestbot" style="border:0; width:100%; height:450px;"></iframe>
             <ul class="blocks-3">
                 <li>
-                    <a href="{{ url_for("Bob") }}" class="red-button">About Bob</a>
+                    <a href="{{ url_for("about") }}" class="red-button">About Bob</a>
                 </li>
                 <li>
-                    <a class="red-button">Meet the Maker</a>
+                    <a href="{{ url_for("maker") }}" class="red-button">Meet the Maker</a>
                 </li>
                 <li>
-                    <a class="red-button">Compare Classifiers</a>
+                    <a href="{{ url_for("classifiers" }}" class="red-button">Compare Classifiers</a>
                 </li>
             </ul>
         </div>
