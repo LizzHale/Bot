@@ -9,7 +9,7 @@
 
 #title-chat {
     position: relative;
-    left: -150px;
+    left: -175px;
 }
 
 h2 {
@@ -23,7 +23,7 @@ h2 {
 
 #flashlight {
     font-family: 'Univers W01 63 Bold Ex';
-    font-size: 125px;
+    font-size: 120px;
     color: hsla(0,0%,0%,0);
     outline: none;
 }
