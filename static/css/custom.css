@@ -62,7 +62,7 @@ h2 {
 
 }
 
-.red-button {
+a.red-button {
   display: block;
   width: 150px;
   padding: 0;
@@ -75,16 +75,16 @@ h2 {
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
-.red-button {
+a.red-button {
   background: #d70a16;
   font-family: "Univers LT W01 75 Black";
 }
 
-.red-button {
+a.red-button {
   box-shadow: 0px 5px 5px 0px #A0040D;
 }
 
-.red-button:active {
+a.red-button:active {
     margin-top:15px;
     margin-bottom: 5px;
     box-shadow: 0px 0px 0px 0px #007144;
