@@ -43,13 +43,12 @@ footer {
 
 .sidebar2 {
     opacity: 0;
+    font-family: "Apollo W01";
     transition-property: opacity;
     transition-duration: 1s;
     transition-timing-function: ease;
 }
 
-h2.sidebar {
-}
 .unit-70 {
     padding-left: 10px;
 }
@@ -80,6 +79,7 @@ h2.sidebar {
 
 .red-button {
   background: #d70a16;
+  font-family: "Univers LT W01 75 Black";
 }
 
 .red-button {
