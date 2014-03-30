@@ -3,5 +3,3 @@ env
 .env
 config.py
 *.pyc
-newrelic.ini
-config.py
