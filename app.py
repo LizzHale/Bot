@@ -10,10 +10,10 @@ app.config.from_object(config)
 
 @app.route("/")
 def index():
-    return redirect(url_for("welcome"))
+    return redirect(url_for("Bob"))
 
-@app.route("/welcome")
-def welcome():
+@app.route("/Bob")
+def Bob():
     # Mock up is based on the fisher classifier
     message = "Despite the rave reviews, the restaurant was terrible"
     features = {'rave': 1, 'reviews': 1, 'restaurant': 1, 'terrible': 1, 'despite': 1}
@@ -24,6 +24,10 @@ def welcome():
                             probability_of_negative=probability_of_negative, 
                             probability_of_positive=probability_of_positive,
                             classification=classification)
+
+@app.route("/chat")
+def chat():
+    return render_template("chat.html")
 
 if __name__ == "__main__":
     app.run(debug = True)

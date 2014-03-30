@@ -1,10 +1,15 @@
+
 #top {
-    padding: 30px;
     height: 150px;
     width: 100%;
     background-image: url("../img/3.jpg");
     background-size: contain;
     box-shadow: 0px 5px 5px 0px #817D7D;
+}
+
+#title-chat {
+    position: relative;
+    left: -150px;
 }
 
 h2 {
@@ -18,7 +23,7 @@ h2 {
 
 #flashlight {
     font-family: 'Univers W01 63 Bold Ex';
-    font-size: 75px;
+    font-size: 125px;
     color: hsla(0,0%,0%,0);
     outline: none;
 }
@@ -28,13 +33,6 @@ h2 {
     text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
 }
 
-
-footer {
-    height: 25px;
-    width: 100%;
-    background-color: #dbdada;
-
-}
 
 .sidebar {
     padding-top: 1px;
@@ -66,9 +64,9 @@ footer {
 
 .red-button {
   display: block;
-  width: 100%;
+  width: 150px;
   padding: 0;
-  margin: 10px 20px 10px 0;
+  margin: 10px 20px 10px 0px;
   text-align: center;
   line-height: 40px;
   color: #FFF;
@@ -92,7 +90,30 @@ footer {
     box-shadow: 0px 0px 0px 0px #007144;
 }
 
-p {
-    padding: 1px;
+@media only screen and (max-width: 1330px) {
+    #title-chat {
+        left: 0px;
+    }
+    #flashlight {
+        padding-top: 30px;
+        font-size: 75px;
+    }
+}
+@media only screen and (max-width: 770px) {
+    #title-chat {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    #title-chat {
+        display: none;
+    }
+}
+
+.wrap {
+    margin: auto;
+    width: 60%;
+    max-width: 1200px;
 }
 
