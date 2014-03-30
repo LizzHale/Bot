@@ -1,13 +1,29 @@
-#title {
+#top {
+    padding: 30px;
     height: 150px;
     width: 100%;
-    background-color: #d70a16;
-    box-shadow: 0px 5px 5px 0px #A0040D;
+    background-image: url("../img/3.jpg");
+    background-size: contain;
+    box-shadow: 0px 5px 5px 0px #817D7D;
 }
 
-#title:hover {
-
+#robot {
+    padding-top: 20px;
+    width: 100%;
 }
+
+#flashlight {
+    font-size: 75px;
+    color: hsla(0,0%,0%,0);
+    webkit-perspective: 80px;
+    outline: none;
+}
+#light {
+    display: inline-block;
+    text-shadow: #111 0 0 1px, rgba(255,255,255,0.1) 0 1px 3px;
+    text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+}
+
 
 footer {
     height: 25px;
