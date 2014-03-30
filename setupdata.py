@@ -40,13 +40,13 @@ def train(classifier, training_set, database):
 def test(classifier, test_set):
     """ Calls the accuracy method on the test data for the given classifier """
     # accuracy with the naivebayes classifier is at 59.8% 
-    # accuracy with the fisher classifier is at ?
+    # accuracy with the fisher classifier is at 64.39%
     return classifier.accuracy(test_set)
 
 def getclassifier():
     """ Creates an instance of the classifier """
     # TO DO - create two different functions for the two different classifiers
-    classifier = classy.naivebayes(classy.getwords)
+    classifier = classy.fisherclassifier(classy.getwords)
     return classifier
 
 if __name__ == "__main__":

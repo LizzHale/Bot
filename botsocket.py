@@ -14,6 +14,7 @@ NICK="Bobnut"
 IDENT="bobnut"
 REALNAME="Bob DeKokosnoot"
 CHANNEL="##hbtestbot"
+# the classifier is currently a fisherclassifier 3/29
 CLASSIFIER=setupdata.getclassifier()
 
 def bot_socket():
