@@ -1,2 +1,2 @@
-worker: run-program python botsocket.py
+worker: python botsocket.py
 web: newrelic-admin run-program gunicorn app:app 
