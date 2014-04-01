@@ -69,7 +69,6 @@ body#chat-body {
   border-radius: 10px;
 }
 
-.unit-50.classifier 
 ul.blocks-3#chat-nav {
     margin-left: 0;
 }
@@ -78,7 +77,7 @@ h2,
 h3,
 h4,
 h5 {
-    font-family:'Univers W01 63 Bold Ex Obl';
+    font-family:'Univers W01 63 Bold Ex';
     font-weight: normal;
 }
 
