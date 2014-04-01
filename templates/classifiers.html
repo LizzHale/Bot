@@ -10,67 +10,40 @@
     <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/cf720352-7469-48e7-8e54-76c84eab706f.css"/>
 </head>
 <body>
-    <div class="units-row" id="top">
-        <div class="unit-20">
-            <img id="robot" src="../static/img/robot.png">
-        </div>
-        <div class="unit-60"><h1 id="flashlight">
-            <span id="light">About Bob</span></h1>
+    <div class="units-row">
+            <div class="unit-100 header"><h1>The Classifiers</h1></div>
+            <a class="red-button" id="next">Next</a>
+    </div>
+    <div class="wrap">
+        <div class="units-row" id="classifiers">
+            <div class="unit-50 classifier" id="Ronald">
+                <div class="title-box"><h3>The Fisher Classifier</h3></div>
+                <img class="robot" src="../static/img/Ronald.png"/>
+                <div id="description">
+                    <p>A Fisher classifier is...</p>
+                </div>
+                <div id="example">
+                <!--message=message, features=features, 
+                    probability_of_negative=probability_of_negative, 
+                    probability_of_positive=probability_of_positive,
+                    classification=classification) -->
+                    <p>{{message}}</p>
+                    {%for key, value in features.iteritems() %}
+                    <span> {{key}}</span>
+                    {% endfor %}
+                    <p>{{probability_of_positive}}% positive</p>
+                    <p>{{probability_of_negative}}% negative</p>
+                    <p>{{classification}}</p>
+                </div>
+            </div>
+            <div class="unit-50 classifier" id="Thomas">
+                <div class="title-box"><h3>The Bayes Classifier</h3></div>
+                <img class="robot" src="../static/img/Thomas.png"/>
+                <div id="description">
+                    <p>A Naive Bayes classifier is...</p>
+                </div>
+            </div>
         </div>
     </div>
-        <div class="wrap">
-            <!--message=message, features=features, 
-                            probability_of_negative=probability_of_negative, 
-                            probability_of_positive=probability_of_positive,
-                            classification=classification) -->
-            <div class="sidebar">
-                <h2>Message</h2>
-                <div class="sidebar2">
-                    <p> {{message}} </p>
-                </div>
-            </div>
-            <div class="sidebar">
-                <h2>Features</h2>
-                <div class="units-row sidebar2">
-                    {%for key, value in features.iteritems() %}
-                        <div class="unit-10"> {{key}} </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="sidebar">
-                <h2>Probability</h2>
-                <div class="sidebar2">
-                    <p> Bob determined that the message was {{probability_of_negative}}% likely to be negative </p>
-                    <p> Bob determined that the message was {{probability_of_positive}}% likely to be positive </p>
-                </div>
-            </div>
-            <div class="sidebar">
-                <h2>Classification</h2>
-                <div class="sidebar2">
-                    <p> Therefore, Bob determined that the 
-                        message was {{classification}}</p>
-                </div>
-            </div>
-            <div class="sidebar">
-                <h2>Was Bob Mistaken?</h2>
-                <div class="sidebar2"></div>
-            </div>
-            <div class="units-row">
-                <div class="unit-100">
-                    <ul class="blocks-3">
-                        <li>
-                            <a href="{{ url_for("about") }}" class="red-button">About Bob</a>
-                        </li>
-                        <li>
-                            <a href="{{ url_for("maker") }}" class="red-button">Meet the Maker</a>
-                        </li>
-                        <li>
-                            <a href="{{ url_for("chat") }}" class="red-button">Chat with Bob</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
 </body>
 </html>
