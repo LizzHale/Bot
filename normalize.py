@@ -18,14 +18,8 @@ def remove_links(text):
 def remove_emails(text):
     pass
 
-# TO DO - will need to remove the user
-def remove_usernames(text):
-    pass
-
-# TO DO - remove words less than two characters
-def remove_words_less_than_two_characters(text):
-    pass
-
+def remove_digits(text):
+    return ""
 
 def remove_stopwords(list):
     sw = stopwords.stopwords
@@ -49,6 +43,7 @@ def normalize_whitespace(text):
     return strip
 
 def contraction(match):
+    print match
     # when called, will find the expanded contraction from the contractions dictionary and return the expanded contraction
     contdict = contractions.contractions
     if contdict.get(match.group()):
@@ -58,8 +53,9 @@ def contraction(match):
 
 def expand_contractions(text):
     # look for items 
-    replacementpattern = re.compile(r"[a-z]*'[a-z]*")
-    another = replacementpattern.sub(contraction, text)
+    replacementPattern = re.compile(r"[a-z]*'[a-z]*")
+    print replacementPattern
+    another = replacementPattern.sub(contraction, text)
     return another
 
 
@@ -67,7 +63,7 @@ def clean(text):
     # convert_unicode(text)
     # remove_links(text)
     # remove_emails(text)
-    # remove_usernames(text)
+    # remove_digits(text)
     lowered = convert_lowercase(text)
     expanded = expand_contractions(lowered)
     no_punc = remove_punctuation(expanded)
@@ -77,8 +73,8 @@ def clean(text):
 # takes a string and divides all the words by whitespace and outputs a list
 def tokenize(string):
     tokenizer = WhitespaceTokenizer()
-    list = tokenizer.tokenize(string)
-    return list
+    returnlist = tokenizer.tokenize(string)
+    return returnlist
 
 
 if __name__ == '__main__':
