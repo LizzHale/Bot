@@ -1,184 +1,50 @@
-#top {
-    height: 150px;
-    width: 100%;
-    background-image: url("../img/3.jpg");
-    background-size: contain;
-    box-shadow: 0px 5px 5px 0px #817D7D;
+.buffer {
+  height: 50px;
 }
 
-body {
-  background-color: rgb(51, 199, 236);
-}
-
-img.robot {
-  position: relative;
-  top: -40px;
-  height: inherit;
-}
-
-.classifier > #description {
-  display: none;
-}
-.classifier > #example {
-  display: none;
-}
-
-.red-button#next {
-  width: 100px;
-  position: relative;
-  left: 80%;
-}
-
-body#chat-body {
-  background-image: none;
-}
-
-.title-box {
-  border: 1px black solid;
-  position: relative;
-  left: -100px;
-  top: 5px;
-  width: 250px;
-  padding: 5px;
-  background-color: black;
-  box-shadow: 0px 2px 5px 0px #817D7D;
-}
-
-.title-box h3 {
-  text-align: center;
-  margin-bottom: 0;
-  color: white;
-  text-shadow: 1px 1px 5px rgba(255,255,255,0.2), -1px -1px rgba(0, 0, 0, 0.5);
-  font-size: 18px;
-}
-
-#title-chat {
-    position: relative;
-    left: -175px;
-}
-.unit-100.header {
-  height: 150px;
-}
-.unit-100.header > h1 {
-  text-align: center;
-  font-family: 'Univers W01 63 Bold Ex';
-  font-size: 120px;
-  color: #030303;
-  text-shadow: 1px 1px 5px rgba(255,255,255,0.2), -1px -1px rgba(0, 0, 0, 0.5);
-  font-weight: normal;
-}
-.unit-50.classifier {
-  background-color: white;
-  height: 600px;
-  border-radius: 10px;
-}
-
-ul.blocks-3#chat-nav {
-    margin-left: 0;
-}
-
-h2,
-h3,
-h4,
-h5 {
-    font-family:'Univers W01 63 Bold Ex';
-    font-weight: normal;
-}
-
-#robot {
-    padding-top: 50px;
-    width: 100%;
-}
-
-#flashlight {
-    font-family: 'Univers W01 63 Bold Ex';
-    font-size: 120px;
-    color: hsla(0,0%,45%,0);
-    outline: none;
-}
-#light {
-    display: inline-block;
-    text-shadow: #000 0 0 4px, #000 0 0 40px;
-}
-
-
-.sidebar {
-    padding-top: 1px;
-    width: 100%;
-}
-
-.sidebar2 {
-    opacity: 0;
-    font-family: "Apollo W01";
-    transition-property: opacity;
-    transition-duration: 1s;
-    transition-timing-function: ease;
-}
-
-.unit-70 {
-    padding-left: 10px;
-}
-
-.unit-30 {
-    padding-right: 10px;
-}
-
-
-.sidebar:hover > .sidebar2 {
-    opacity: 1;
-    color: black;
-
-}
-
-button.red-button {
-  display: block;
-  padding: 0;
-  margin: 10px 20px 10px 0px;
-  text-align: center;
-  line-height: 40px;
-  color: #FFF;
-  border-radius: 4px;
-  transition: all 0.2s;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-  border-color: #d70a16;
-  box-shadow: 0px 5px 5px 0px #A0040D;
-  background: #d70a16;
+.title > div {
   font-family: "Univers LT W01 75 Black";
+  font-weight: none;
+  height: 50px;
 }
 
-button.red-button:active {
-    margin-top:15px;
-    margin-bottom: 5px;
-    box-shadow: 0px 0px 0px 0px #007144;
+.navigation > div {
+  font-family: 'Apollo W01';
+  font-weight: none;
+  height: 25px;
+}
+
+p {
+  font-family: 'Apollo W01';
+  font-weight: none;
+}
+
+.lead {
+  font-family:'UniversLTW01-53ExObl';
+  font-weight: none;
+}
+
+.chat > div {
+  height: 450px;
 }
 
 @media only screen and (max-width: 1330px) {
-    #title-chat {
-        left: 0px;
-    }
-    #flashlight {
-        padding-top: 30px;
-        font-size: 75px;
-    }
+
 }
-@media only screen and (max-width: 770px) {
-    #title-chat {
-        display: none;
-    }
+@media only screen and (max-width: 780px) {
+  .buffer {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 479px) {
-    #title-chat {
-        display: none;
-    }
+  .buffer {
+    display: none;
+  }
+  .side {
+    display: none;
+  }
 }
 
-.wrap {
-    margin: auto;
-    width: 80%;
-    height: 900px;
-    max-width: 1200px;
-    background-color: rgb(51, 199, 236);
-}
 
 

@@ -1,49 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Meet Bob</title>
+    <title>Chat with Bob</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/cf720352-7469-48e7-8e54-76c84eab706f.css"/>
     <link href="../static/css/kube.css" rel="stylesheet">
     <link href="../static/css/custom.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/cf720352-7469-48e7-8e54-76c84eab706f.css"/>
 </head>
 <body>
-    <div class="units-row">
-            <div class="unit-100 header"><h1>The Classifiers</h1></div>
-            <button class="red-button" id="next">Next</button>
+    <div class="units-row buffer">
+        <div class="unit-100"></div>
     </div>
-    <div class="wrap">
-        <div class="units-row" id="classifiers">
-            <div class="unit-50 classifier" id="Ronald">
-                <div class="title-box"><h3>The Fisher Classifier</h3></div>
-                <img class="robot" src="../static/img/Ronald.png"/>
-                <div id="description">
-                    <p>A Fisher classifier is...</p>
-                </div>
-                <div id="example">
-                <!--message=message, features=features, 
-                    probability_of_negative=probability_of_negative, 
-                    probability_of_positive=probability_of_positive,
-                    classification=classification) -->
-                    <p>{{message}}</p>
-                    {%for key, value in features.iteritems() %}
-                    <span> {{key}}</span>
-                    {% endfor %}
-                    <p>{{probability_of_positive}}% positive</p>
-                    <p>{{probability_of_negative}}% negative</p>
-                    <p>{{classification}}</p>
-                </div>
-            </div>
-            <div class="unit-50 classifier" id="Thomas">
-                <div class="title-box"><h3>The Bayes Classifier</h3></div>
-                <img class="robot" src="../static/img/Thomas.png"/>
-                <div id="description">
-                    <p>A Naive Bayes classifier is...</p>
-                </div>
-            </div>
+    <div class="units-row title">
+        <div class="unit-10 side">
         </div>
+        <div class="unit-60">
+            <h1>About This Project</h1>
+        </div>
+        <div class="unit-30 side"></div>
+    </div>
+    <div class="units-row navigation">
+        <div class="unit-80">
+            <nav class="navbar navbar-right">
+                <ul>
+                    <li href="url_for({{chat}})">Chat</li>
+                    <li href="url_for({{classifiers}})"><span>About This Project<span></li>
+                    <li href="url_for({{maker}})">Meet the Maker</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="unit-20"></div>
+    </div>
+    <div class="units-row chat">
+        <div class="unit-10 side"></div>
+            <div class="unit-80 content">
+                <p class="lead">This is where we'll introduce the project<p>
+                <p>Continue talking about the project here</p>
+                <div class="units-row classifiers">
+                    <div class="unit-50 classifier" id="Ronald">
+                        <div class="title-box"><h3>The Fisher Classifier</h3></div>
+                        <div id="example">
+                        <!--message=message, features=features, 
+                            probability_of_negative=probability_of_negative, 
+                            probability_of_positive=probability_of_positive,
+                            classification=classification) -->
+                            <p>{{message}}</p>
+                            {%for key, value in features.iteritems() %}
+                            <span> {{key}}</span>
+                            {% endfor %}
+                            <p>{{probability_of_positive}}% positive</p>
+                            <p>{{probability_of_negative}}% negative</p>
+                            <p>{{classification}}</p>
+                        </div>
+                    </div>
+                    <div class="unit-50 classifier" id="Thomas">
+                        <div class="title-box"><h3>The Bayes Classifier</h3></div>
+                        <div id="example">
+                        <!--message=message, features=features, 
+                            probability_of_negative=probability_of_negative, 
+                            probability_of_positive=probability_of_positive,
+                            classification=classification) -->
+                            <p>{{message}}</p>
+                            {%for key, value in features.iteritems() %}
+                            <span> {{key}}</span>
+                            {% endfor %}
+                            <p>{{probability_of_positive}}% positive</p>
+                            <p>{{probability_of_negative}}% negative</p>
+                            <p>{{classification}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="unit-10 side"></div>
     </div>
     <script src="../static/js/jquery-2.1.0.min.js"></script>
     <script src="../static/js/application.js"></script>
