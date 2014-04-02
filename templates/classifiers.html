@@ -26,7 +26,7 @@
         <div class="unit-80">
             <nav class="navbar navbar-right">
                 <ul>
-                    <li><a href="{{ url_for('chat') }}">Chat</a></li>
+                    <li><a href="{{ url_for('chat') }}">Chat</li>
                     <li><a href="{{ url_for('classifiers') }}"><span>About This Project<span></a></li>
                     <li><a href="{{ url_for('maker') }}">Meet the Maker</a></li>
                 </ul>
@@ -43,7 +43,7 @@
                 <h3>The Classifiers Used</h3>
                 <div class="units-row classifiers">
                     <div class="unit-50 classifier" id="Ronald">
-                        <p class="lead">The Fisher Classifier</p
+                        <div class="title-box"><h4>The Fisher Classifier</h4></div>
                         <div id="example">
                         <!--message=message, features=features, 
                             probability_of_negative=probability_of_negative, 
@@ -51,7 +51,7 @@
                             classification=classification) -->
                             <p>{{message}}</p>
                             {%for key, value in features.iteritems() %}
-                            <p> {{key}}<br> </p>
+                            <p> {{key}}</p>
                             {% endfor %}
                             <p>{{probability_of_positive}}% positive</p>
                             <p>{{probability_of_negative}}% negative</p>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="unit-50 classifier" id="Thomas">
-                        <p class="lead">The Bayes Classifier</p>
+                        <div class="title-box"><h4>The Bayes Classifier</h4></div>
                         <div id="example">
                         <!--message=message, features=features, 
                             probability_of_negative=probability_of_negative, 
@@ -67,7 +67,7 @@
                             classification=classification) -->
                             <p>{{message}}</p>
                             {%for key, value in features.iteritems() %}
-                            <p>{{key}}<br><p>
+                            <span> {{key}}</span>
                             {% endfor %}
                             <p>{{probability_of_positive}}% positive</p>
                             <p>{{probability_of_negative}}% negative</p>
