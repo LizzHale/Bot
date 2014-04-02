@@ -46,7 +46,7 @@ def test(classifier, test_set):
 def getclassifier():
     """ Creates an instance of the classifier """
     # TO DO - create two different functions for the two different classifiers
-    classifier = classy.fisherclassifier(classy.getwords)
+    classifier = classy.fisherclassifier(normalize.getwords)
     return classifier
 
 if __name__ == "__main__":

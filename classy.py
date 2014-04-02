@@ -7,23 +7,8 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.sql import func
 
 import config
-import normalize
 from tables import featurecount, session, categorycount
 
-def getwords(doc):
-    """ Normalizes and tokenizes the document. Returns a dictionary of the unique words"""
-
-    normalized = normalize.clean(doc)
-    tokenized = normalize.tokenize(normalized)
-    # Things to consider:
-    # Accuracy is 59.8% when stopwords are removed (compare to 59.1%)
-    # However, the classifier predicts "I'm not happy" as positive with
-    # stopwords removed
-    # and "negative" when they are left in. 
-    words = normalize.remove_stopwords(tokenized)
-    # Return the unique set of words only
-    return dict([(w,1) for w in words])
-    
 
 class classifier:
     def __init__(self, getfeatures,filename=None):

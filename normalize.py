@@ -43,7 +43,6 @@ def normalize_whitespace(text):
     return strip
 
 def contraction(match):
-    print match
     # when called, will find the expanded contraction from the contractions dictionary and return the expanded contraction
     contdict = contractions.contractions
     if contdict.get(match.group()):
@@ -54,7 +53,6 @@ def contraction(match):
 def expand_contractions(text):
     # look for items 
     replacementPattern = re.compile(r"[a-z]*'[a-z]*")
-    print replacementPattern
     another = replacementPattern.sub(contraction, text)
     return another
 
@@ -76,6 +74,20 @@ def tokenize(string):
     returnlist = tokenizer.tokenize(string)
     return returnlist
 
+def getwords(doc):
+    """ Normalizes and tokenizes the document. Returns a dictionary of the unique words"""
+
+    normalized = clean(doc)
+    tokenized = tokenize(normalized)
+    # Things to consider:
+    # Accuracy is 59.8% when stopwords are removed (compare to 59.1%)
+    # However, the classifier predicts "I'm not happy" as positive with
+    # stopwords removed
+    # and "negative" when they are left in. 
+    words = remove_stopwords(tokenized)
+    # Return the unique set of words only
+    return dict([(w,1) for w in words])
+    
 
 if __name__ == '__main__':
-    clean()
+    pass
