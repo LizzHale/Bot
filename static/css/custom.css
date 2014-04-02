@@ -19,6 +19,11 @@ p {
   font-weight: none;
 }
 
+span#key {
+  font-family: 'Apollo W01';
+  font-weight: none;
+}
+
 .lead {
   font-family:'UniversLTW01-53ExObl';
   font-weight: none;
