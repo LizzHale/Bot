@@ -139,7 +139,7 @@ class classifier:
 
     def classify(self,item,default=None):
         """ Returns the probable category for a given item/feature """
-        print "This is the classify in the the classifier class"
+        
         probs={}
         # Find the category with the highest probability
         max=0.0
@@ -240,12 +240,10 @@ class fisherclassifier(classifier):
 
     def classify(self, item, default=None):
         # Loop through looking for the best result
-        print "This is the classify in the fisher classifier"
         best = default
         maxim = 0.0
         for c in self.categories():
             p = self.fisherprob(item, c)
-            print c, p
             # Make sure it exceeds its minimum
             if p > self.getminimums(c) and p > maxim:
                 best = c

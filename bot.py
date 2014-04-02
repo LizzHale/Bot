@@ -1,4 +1,3 @@
-
 class bot:
     def __init__(self, nickname, identity, realname, channel, classifier):
         self.nickname = nickname

@@ -2,7 +2,6 @@
 
 import socket
 import sys
-
 import bot
 import setupdata
 from tables import session
