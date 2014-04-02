@@ -43,7 +43,7 @@
                 <h3>The Classifiers Used</h3>
                 <div class="units-row classifiers">
                     <div class="unit-50 classifier" id="Ronald">
-                        <div class="title-box"><h4>The Fisher Classifier</h4></div>
+                        <p class="lead">The Fisher Classifier</p
                         <div id="example">
                         <!--message=message, features=features, 
                             probability_of_negative=probability_of_negative, 
@@ -51,7 +51,7 @@
                             classification=classification) -->
                             <p>{{message}}</p>
                             {%for key, value in features.iteritems() %}
-                            <p> {{key}}</p>
+                            <p> {{key}}<br> </p>
                             {% endfor %}
                             <p>{{probability_of_positive}}% positive</p>
                             <p>{{probability_of_negative}}% negative</p>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="unit-50 classifier" id="Thomas">
-                        <div class="title-box"><h4>The Bayes Classifier</h4></div>
+                        <p class="lead">The Bayes Classifier</p>
                         <div id="example">
                         <!--message=message, features=features, 
                             probability_of_negative=probability_of_negative, 
@@ -67,7 +67,7 @@
                             classification=classification) -->
                             <p>{{message}}</p>
                             {%for key, value in features.iteritems() %}
-                            <span> {{key}}</span>
+                            <p>{{key}}<br><p>
                             {% endfor %}
                             <p>{{probability_of_positive}}% positive</p>
                             <p>{{probability_of_negative}}% negative</p>
