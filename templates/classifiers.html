@@ -51,10 +51,10 @@
                             classification=classification) -->
                             <p>{{message}}</p>
                             {%for key, value in features.iteritems() %}
-                            <span id="key">{{key}}</span>
+                            <p><span id="key">{{key}}</span><p>
                             {% endfor %}
-                            <p>{{probability_of_positive}}% positive</p>
-                            <p>{{probability_of_negative}}% negative</p>
+                            <p>{{probability_of_positive}}% positive<br>
+                               {{probability_of_negative}}% negative</p>
                             <p>{{classification}}</p>
                         </div>
                     </div>
@@ -67,10 +67,10 @@
                             classification=classification) -->
                             <p>{{message}}</p>
                             {%for key, value in features.iteritems() %}
-                            <span id="key">{{key}}</span>
+                            <p><span id="key">{{key}}</span><p>
                             {% endfor %}
-                            <p>{{probability_of_positive}}% positive</p>
-                            <p>{{probability_of_negative}}% negative</p>
+                            <p>{{probability_of_positive}}% positive<br>
+                               {{probability_of_negative}}% negative</p>
                             <p>{{classification}}</p>
                         </div>
                     </div>

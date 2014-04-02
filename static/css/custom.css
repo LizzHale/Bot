@@ -9,9 +9,12 @@
 }
 
 .navigation > div {
+  height: 25px;
+}
+
+.navigation > a {
   font-family: 'Apollo W01';
   font-weight: none;
-  height: 25px;
 }
 
 p {
