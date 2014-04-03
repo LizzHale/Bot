@@ -2,17 +2,20 @@
 
 import socket
 import sys
+import os
+
 import bot
 import setupdata
 from tables import session
 
 
-HOST="irc.freenode.net"
-PORT=6667
-NICK="Bobnut"
-IDENT="bobnut"
-REALNAME="Bob DeKokosnoot"
-CHANNEL="##hbtestbot"
+HOST=os.environ.get("HOST")
+PORT=int(os.environ.get("PORT"))
+NICK=os.environ.get("NICK")
+IDENT=os.environ.get("IDENT")
+REALNAME=os.environ.get("REALNAME")
+CHANNEL=os.environ.get("CHANNEL")
+
 
 # the classifier is currently a fisherclassifier 3/29
 CLASSIFIER=setupdata.getclassifier()

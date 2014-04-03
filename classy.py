@@ -139,7 +139,7 @@ class classifier:
 
     def classify(self,item,default=None):
         """ Returns the probable category for a given item/feature """
-        
+
         probs={}
         # Find the category with the highest probability
         max=0.0
@@ -250,7 +250,7 @@ class fisherclassifier(classifier):
                 maxim = p
         return best
 
- # Still has problems with Despite the rave reviews, the restaurant did not live up to its potential
+
 
 
 
