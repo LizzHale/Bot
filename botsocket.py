@@ -10,7 +10,7 @@ from tables import session
 
 
 HOST=os.environ.get("HOST")
-BOT_PORT=int(os.environ.get("PORT"))
+BOT_PORT=int(os.environ.get("BOT_PORT"))
 NICK=os.environ.get("NICK")
 IDENT=os.environ.get("IDENT")
 REALNAME=os.environ.get("REALNAME")
