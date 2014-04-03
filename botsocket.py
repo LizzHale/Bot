@@ -10,7 +10,7 @@ from tables import session
 
 
 HOST=os.environ.get("HOST")
-PORT=int(os.environ.get("PORT"))
+BOT_PORT=int(os.environ.get("PORT"))
 NICK=os.environ.get("NICK")
 IDENT=os.environ.get("IDENT")
 REALNAME=os.environ.get("REALNAME")
@@ -31,7 +31,7 @@ def bot_socket():
     s=socket.socket()
 
     # The CONNECT command is used to establish a new connection with a server
-    s.connect((HOST, PORT))
+    s.connect((HOST, BOT_PORT))
     # The NICK command is used to give user a nickname 
     s.send("NICK %s\r\n" % bob.nickname)
     # The USER command is used at the beginning of a connection
