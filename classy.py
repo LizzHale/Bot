@@ -143,7 +143,7 @@ class classifier:
         probs={}
         # Find the category with the highest probability
         max=0.0
-        for cat in self.categories():
+        for cat in self.categories(): 
             probs[cat]=self.prob(item,cat)
             if probs[cat]>max:
                 max=probs[cat]

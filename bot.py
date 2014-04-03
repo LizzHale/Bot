@@ -32,22 +32,26 @@ class bot:
 
     def classification(self, msg):
         polarity = self.classifier.classify(msg, default="neutral")
-        # TO DO - check how many features and if there are
-        # less than two features say: "Tell me more."
-        # TO DO - create multiple replies for positive and negative that the 
-        # bot can choose at random. 
-        if polarity == "positive":
-            reply = "Your message was positive"
+        features = self.classifier.getfeatures(msg)
+        if len(features) < 2:
+            reply = "Tell me more..."
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
 
-        elif polarity == "negative":
-            reply = "Your message was negative"
-            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
-        # TO DO - Use this to continue to train the bot: 
-        elif polarity == "neutral":
-            reply = "Is that a bad thing or a good thing?"
-            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
-            
+        else:
+            # TO DO - create multiple replies for positive and negative that the 
+            # bot can choose at random. 
+            if polarity == "positive":
+                reply = "Your message was positive"
+                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+
+            elif polarity == "negative":
+                reply = "Your message was negative"
+                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+            # TO DO - Use this to continue to train the bot: 
+            elif polarity == "neutral":
+                reply = "Is that a bad thing or a good thing?"
+                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+                
 
     def pong(self, msg):
         return "PONG %s\r\n" % msg[1]
