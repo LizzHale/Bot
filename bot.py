@@ -33,7 +33,7 @@ class bot:
     def classification(self, msg):
         polarity = self.classifier.classify(msg, default="neutral")
         features = self.classifier.getfeatures(msg)
-        if len(features) < 2:
+        if len(features) < 3:
             reply = "Tell me more..."
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
 
