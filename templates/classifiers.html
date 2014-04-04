@@ -41,23 +41,53 @@
                 <p class="lead">This is where we'll introduce the project<p>
                 <p>Continue talking about the project here</p>
                 <h3>The Classifiers Used</h3>
-                <blockquote>{{message}}</blockquote>
-                <small>Michiko Kakutani</small> &mdash; <cite>Nick Hornby's "Along Way Down"</cite><br><br>
-                <p>The bot identified the following features from the example:<p>
-                {%for feature in features %}
-                <span id="key">{{feature}}</span>
-                {% endfor %}    
-                <div class="units-row classifiers">
-                    <div class="unit-50 classifier" id="Ronald">
-                        <div class="title-box"><h5>The Fisher Classifier</h5></div>
-                        <div id="example">
-                        <p>{{fisherclassification}}</p>
+                <p class="lead">The Naive Bayes Classifier</p>
+                <p>Talk about the classifier here...</p>
+                <p class="lead">The Fisher Classifier</p>
+                <p>Talk about the classifier here...</p>
+                <h3>Compare the classifiers</h3>
+                <div id="choices">
+                    <p>See how the classifiers stack up. Click on the examples below or choose your own.</p>
+                    <ul class="forms-list">
+                        <li>
+                            <label for="radio-1"><blockquote class="examples">Although Mr. Delillo extracts considerable suspense from his story, while building a Pinteresque sense of dread, there is something suffocating and airless about his entire production.</blockquote>
+                                    <small>Michiko Kakutani</small> &mdash; <cite>"Make War. Make Talk. Make It All Unreal" The New New York Times 1 Feb. 2010</cite><br><br></label>
+                        </li>
+                        <li>
+                            <label for="radio-2"><blockquote class="examples">Although some chapters in this book start with annoying passages detailing the Gardener's ecological credo, Ms. Atwood largely refrains from the sort of proselytizing that tarnished her earlier ventures into science fiction.</blockquote>
+                                    <small>Michiko Kakutani</small> &mdash; <cite>"A Familiar Cast of Fighters in the Final Battle for the Sould of the Earth" The New York Times 14 Sept. 2009</cite><br><br></label>
+                        </li>
+                        <li>
+                            <label for="radio-3"><blockquote class="examples">Instead this cringe-making novel takes the sappy contrivances of his 2001 book, "How to be Good," to an embarrassing new low."</blockquote>
+                                <!-- to cite a review: Meier, Barry. "Energy Drinks Promise Edge, but Experts Say Proof Is Scant." New York Times 1 Jan. 2013 -->
+                                    <small>Michiko Kakutani</small> &mdash; <cite>"Misery's Company for a Confederacy of Depressives in London" The New York Times 20 Jun. 2005</cite><br><br></label>
+                        </li>
+                        <li>
+                            <label for="text">
+                            <p>Choose your own</p>
+                            <textarea rows="4" class="width-100"></textarea>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div id="retrieved">
+                    <p> {{message}} </p>
+                    <p>The bot identified the following features from the example:<p>
+                    {%for feature in features %}
+                    <span id="key">{{feature}}</span>
+                    {% endfor %}    
+                    <div class="units-row classifiers">
+                        <div class="unit-50 classifier" id="Ronald">
+                            <div class="title-box"><h5>The Fisher Classifier</h5></div>
+                            <div id="example">
+                            <p>{{fisherclassification}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="unit-50 classifier" id="Thomas">
-                        <div class="title-box"><h5>The Bayes Classifier</h5></div>
-                        <div id="example">
-                            <p>{{bayesclassification}}</p>
+                        <div class="unit-50 classifier" id="Thomas">
+                            <div class="title-box"><h5>The Bayes Classifier</h5></div>
+                            <div id="example">
+                                <p>{{bayesclassification}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

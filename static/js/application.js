@@ -1,10 +1,10 @@
 $(document).ready( function(){
-    $("button#next").on("click", function(event) {
-        $("img").slideToggle();
-        $("#example").slideToggle();
+    $("li").on("click", function(event) {
+        $("#choices").slideToggle();
+        $("#retrieved").slideToggle();
     });
-    $(".classifier").on("click", function() {
-        $("img").slideToggle();
-        $("#description").slideToggle();
+    $("#retrieved").on("click", function() {
+        $("#choices").slideToggle();
+        $("#retrieved").slideToggle();
     });
 });
