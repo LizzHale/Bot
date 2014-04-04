@@ -45,9 +45,52 @@ def test(classifier, test_set):
 
 def getclassifier():
     """ Creates an instance of the classifier """
-    # TO DO - create two different functions for the two different classifiers
+    # TO DO - set a minimum for both categories. Perhaps lower than 60% for both will return "neutral"
     classifier = classy.fisherclassifier(normalize.getwords)
+    classifier.setminimums("positive", .60)
+    classifier.setminimums("negative", .60)
     return classifier
+
+def stats(msg):
+    ronald = getclassifier()
+    statsDict = {"features": {}, "message": msg, }
+
+
+    features = ronald.getfeatures(msg)
+
+    for key in features:
+        negkeyprob = round((ronald.cprob(key, "negative")*100), 3)
+        poskeyprob = round((ronald.cprob(key, "positive")*100), 3)
+        statsDict["features"][key] = {"negative": negkeyprob, "positive": poskeyprob}
+
+    negmsgprob = round((ronald.fisherprob(msg, "negative")*100), 2)
+    posmsgprob = round((ronald.fisherprob(msg, "positive")*100), 2)
+
+
+    statsDict["docprob"] = {"negative": negmsgprob, "positive": posmsgprob}
+
+    statsDict["classification"] = ronald.classify(msg)
+
+    return statsDict
+
+def comparison(msg):
+    ronald = classy.fisherclassifier(normalize.getwords)
+    thomas = classy.naivebayes(normalize.getwords)
+    featureDict = ronald.getfeatures(msg)
+
+    comparisonDict = {"message": msg}
+
+    features = []
+    for key in featureDict:
+        features.append(key)
+
+    comparisonDict["features"] = features
+
+    comparisonDict["Ronald"] = ronald.classify(msg)
+    comparisonDict["Thomas"] = thomas.classify(msg)
+
+    return comparisonDict
+
 
 if __name__ == "__main__":
     cl = getclassifier()

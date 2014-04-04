@@ -35,12 +35,14 @@ class TestBotFunctions(unittest.TestCase):
         out = self.bot.receive_send(incoming3)
 
         self.assertTrue(out)
+        self.assertEqual(out, "PRIVMSG ##hbtestbot :Tell me more...\r\n")
 
         incoming4 = [":Noodle!32b82abc@gateway/web/cgi-irc/kiwiirc.com/ip.50.184.42.188", "PRIVMSG", "TestBob", ":what's up"]
 
         out = self.bot.receive_send(incoming4)
 
         self.assertTrue(out)
+        self.assertEqual(out, "PRIVMSG Noodle :Why are we talking in here?\r\n")
 
     def testClassification(self):
         incoming = "what's up"

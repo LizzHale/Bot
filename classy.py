@@ -185,8 +185,10 @@ class naivebayes(classifier):
         return p
 
     def prob(self, item, cat):
-
+        """ multiplies the category probability by the document probability """
+        # category probability is the total number of features in the category divided by the total number of features in the classifier
         catprob = self.catcount(cat)/self.totalcount()
+
         docprob = self.docprob(item, cat)
         return docprob * catprob
 
@@ -203,21 +205,29 @@ class fisherclassifier(classifier):
         # The frequency of this feature in all the categories
         freqsum = sum([self.fprob(f, c) for c in self.categories()])
 
-        # The probability is the frequency in this category divide by the overall frequency
+        # The probability is the frequency in this category divided by the overall frequency
         p = clf/(freqsum)
 
         return p
 
     def invchi2(self, chi, df):
+        """ Checks if the calculation fits a chi-squared distribution """
+        # divide the fisher score by 2.0
         m = chi / 2.0
-        s = term = math.exp(-m)
+        # e (approx. 2.718281828) ** -m
+        s = math.exp(-m)
+        term = math.exp(-m)
+        # Remember that df is the len(features)*2 and // returns the floored quotient
         for i in range(1, df//2):
             term *= m / i
             s += term
+        # return which ever is smaller - s or 1.0
         return min(s, 1.0)
 
 
     def fisherprob(self, item, cat):
+        """ Multiplies all the feature probabilities together. Takes the natural log of this result and then multiplies that by -2. 
+        This is then fed through the inverse chi-square function to return the probability that the item is not random"""
         # Multiply all the probabilities together
         p = 1
         features = self.getfeatures(item)
@@ -227,7 +237,7 @@ class fisherclassifier(classifier):
         # Take the natural log and multiply by -2
         fscore = (-2)*math.log(p)
 
-        # Use the invese chi2 function to get a probability
+        # Use the inverse chi-square function to get a probability
         return self.invchi2(fscore, len(features)*2)
 
     def setminimums(self, cat, minim):
