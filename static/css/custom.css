@@ -18,6 +18,11 @@ li:hover {
   border: 1px solid black;
 }
 
+.instructions {
+  font-family: "Univers LT W01 75 Black" ;
+  font-weight: none;
+}
+
 h1 {
   font-family: "Univers LT W01 75 Black";
   font-weight: none;
