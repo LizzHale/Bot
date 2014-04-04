@@ -15,7 +15,7 @@ def index():
 
 @app.route("/classifiers")
 def classifiers():
-    details = setupdata.comparison("Instead this cring-making novel takes the sappy contrivances of his 2001 book, 'How to be Good,' to an embarrassing new low.")
+    details = setupdata.comparison("Instead this cringe-making novel takes the sappy contrivances of his 2001 book, 'How to be Good,' to an embarrassing new low.")
     message = details["message"]
     features = details["features"]
     bayesclassification = details["Thomas"]
