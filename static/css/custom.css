@@ -10,6 +10,10 @@ div#retrieved {
   display: none;
 }
 
+li:hover {
+  border: 1px solid black;
+}
+
 h1 {
   font-family: "Univers LT W01 75 Black";
   font-weight: none;
