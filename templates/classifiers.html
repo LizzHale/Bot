@@ -65,8 +65,9 @@
                     </ul>
                 </div>
                 <div id="retrieved">
+                    <p class="instructions">For the following message -- </p>
                     <blockquote> {{message}} </blockquote>
-                    <p>The bot identified the following features from the example:<p>
+                    <p class="instructions">The bot identified these features -- <p>
                     {%for feature in features %}
                     <span id="key">{{feature}}</span>
                     {% endfor %}
