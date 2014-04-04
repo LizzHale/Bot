@@ -192,11 +192,9 @@ class naivebayes(classifier):
         docprob = self.docprob(item, cat)
         return docprob * catprob
 
-### TO DO - Have two bots up and running one with the Bayes and the other with the Pearsons
-### In order to continue to train, a certain number of people will need to agree that Bob was mistaken
-### Ronald (Fisher) and Thomas (Bayes)
 class fisherclassifier(classifier):
     def cprob(self, f, cat):
+        """ Divde the frequency in this category by the overall frequency to return the probability """
         # The frequency of this feature in this category
         clf = self.fprob(f, cat)
         if clf == 0: 

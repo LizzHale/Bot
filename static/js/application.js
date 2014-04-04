@@ -1,5 +1,5 @@
 $(document).ready( function(){
-    $("li").on("click", function(event) {
+    $("li.quote").on("click", function(event) {
         $("#choices").slideToggle();
         $("#retrieved").slideToggle();
     });
