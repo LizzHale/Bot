@@ -1,0 +1,21 @@
+    <p class="instructions">For the message you selected -- </p>
+    <blockquote> {{message}} </blockquote>
+    <p class="instructions">The classifier has identified these features -- <p>
+    {%for feature in features %}
+    <span id="key">{{feature}}</span>
+    {% endfor %}
+    <p class="instructions">From these features, the classifiers have concluded that the message belongs to the following categories -- </p>
+    <div class="units-row classifiers">
+        <div class="unit-50 classifier" id="Thomas">
+            <div class="title-box"><h5>The Bayes Classifier</h5></div>
+            <div id="example">
+                    <p>{{bayesclassification}}</p>
+            </div>
+        </div>    
+        <div class="unit-50 classifier" id="Ronald">
+            <div class="title-box"><h5>The Fisher Classifier</h5></div>
+            <div id="example">
+            <p>{{fisherclassification}}</p>
+            </div>
+        </div>
+    </div>

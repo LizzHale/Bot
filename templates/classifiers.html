@@ -65,26 +65,7 @@
                     </ul>
                 </div>
                 <div id="retrieved">
-                    <p class="instructions">For the following message -- </p>
-                    <blockquote> {{message}} </blockquote>
-                    <p class="instructions">The bot identified these features -- <p>
-                    {%for feature in features %}
-                    <span id="key">{{feature}}</span>
-                    {% endfor %}
-                    <div class="units-row classifiers">
-                        <div class="unit-50 classifier" id="Thomas">
-                            <div class="title-box"><h5>The Bayes Classifier</h5></div>
-                            <div id="example">
-                                    <p>{{bayesclassification}}</p>
-                            </div>
-                        </div>    
-                        <div class="unit-50 classifier" id="Ronald">
-                            <div class="title-box"><h5>The Fisher Classifier</h5></div>
-                            <div id="example">
-                            <p>{{fisherclassification}}</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'retrieved.html' %}
                 </div>
             </div>
         <div class="unit-10 side"></div>

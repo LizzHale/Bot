@@ -1,9 +1,11 @@
 import os
 
 from flask import Flask, render_template, request, redirect, session, url_for, flash
+import json
 
 import config
 import setupdata
+
 
 
 app = Flask(__name__)
@@ -15,12 +17,17 @@ def index():
 
 @app.route("/classifiers")
 def classifiers():
-    details = setupdata.comparison("Instead this cringe-making novel takes the sappy contrivances of his 2001 book, 'How to be Good,' to an embarrassing new low.")
-    message = details["message"]
+    return render_template("classifiers.html")
+
+@app.route("/classifiers", methods=["POST"])
+def compare():
+    message = request.form.get("message")
+    details = setupdata.comparison(message)
+    print message
     features = details["features"]
     bayesclassification = details["Thomas"]
     fisherclassification = details["Ronald"]
-    return render_template("classifiers.html", message=message, features=features, 
+    return render_template("retrieved.html", message=message, features=features, 
                             bayesclassification=bayesclassification, fisherclassification=fisherclassification)
 
 @app.route("/chat")
