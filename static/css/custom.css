@@ -6,6 +6,11 @@
   height: 50px;
 }
 
+h1 {
+  font-family: "Univers LT W01 75 Black";
+  font-weight: none;
+}
+
 h3 {
   font-family: "Univers LT W01 75 Black";
   font-weight: none;
@@ -13,6 +18,16 @@ h3 {
 
 h5 {
   font-family: "Univers LT W01 75 Black";
+  font-weight: none;
+}
+
+small {
+  font-family: 'Apollo W01';
+  font-weight: none;
+}
+
+cite {
+  font-family: 'Apollo W01';
   font-weight: none;
 }
 
@@ -34,6 +49,10 @@ span#key {
   font-family: 'Apollo W01';
   font-weight: none;
   padding-right: 15px;
+}
+
+blockquote {
+  font-family: 'UniversLTW01-53ExObl';
 }
 
 .lead {
