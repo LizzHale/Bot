@@ -41,28 +41,20 @@
                 <p class="lead">This is where we'll introduce the project<p>
                 <p>Continue talking about the project here</p>
                 <h3>The Classifiers Used</h3>
+                <p class="lead">{{message}}<p>
+                {%for feature in features %}
+                <span id="key">{{feature}}</span>
+                {% endfor %}    
                 <div class="units-row classifiers">
                     <div class="unit-50 classifier" id="Ronald">
-                        <div class="title-box"><p class="lead">The Fisher Classifier</p></div>
+                        <div class="title-box"><h5>The Fisher Classifier</h5></div>
                         <div id="example">
-                        <!--message = details["message"]
-    features = details["features"]
-    bayesclassification = details["Thomas"]
-    fisherclassification = details["Ronald"] -->
-                            <p>{{message}}</p>
-                            {%for feature in features %}
-                            <span id="key"><p>{{feature}}</p></span>
-                            {% endfor %}
-                            <p>{{fisherclassification}}</p>
+                        <p>{{fisherclassification}}</p>
                         </div>
                     </div>
                     <div class="unit-50 classifier" id="Thomas">
                         <div class="title-box"><p class="lead">The Bayes Classifier</p></div>
                         <div id="example">
-                            <p>{{message}}</p>
-                            {%for feature in features %}
-                            <span id="key">{{feature}}</span>
-                            {% endfor %}
                             <p>{{bayesclassification}}</p>
                         </div>
                     </div>

@@ -25,6 +25,7 @@ p {
 span#key {
   font-family: 'Apollo W01';
   font-weight: none;
+  padding-right: 2px;
 }
 
 .lead {
