@@ -30,20 +30,17 @@ def compare():
     return render_template("retrieved.html", message=message, features=features, 
                             bayesclassification=bayesclassification, fisherclassification=fisherclassification)
 
-@app.route("/chat" method=["POST"])
-def stats():
+@app.route("/chat")
+def chat():
     details = setupdata.stats("Despite the rave reviews, the restaurant was terrible")
     message = details["message"]
     features = details["features"]
     negprobability = details["docprob"]["negative"]
     posprobability = details["docprob"]["positive"]
     classification = details["classification"]
-    return render_template("stats.html", message=message, features=features, 
+    return render_template("chat.html", message=message, features=features, 
         negprobability=negprobability, posprobability=posprobability, 
         classification=classification)
-@app.route("/chat")
-def chat():
-    return render_template("chat.html")
 
 @app.route("/maker")
 def maker():
