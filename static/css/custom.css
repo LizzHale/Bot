@@ -10,6 +10,10 @@ div#retrieved {
   display: none;
 }
 
+blockquote {
+  padding-left: 50px;
+}
+
 li:hover {
   border: 1px solid black;
 }
