@@ -19,8 +19,9 @@ li:hover {
 }
 
 .instructions {
-  font-family: "Univers LT W01 75 Black" ;
+  font-family:'UniversLTW01-53Extended';
   font-weight: none;
+  font-size: 15px;
 }
 
 h1 {
