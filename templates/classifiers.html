@@ -45,33 +45,25 @@
                     <div class="unit-50 classifier" id="Ronald">
                         <div class="title-box"><p class="lead">The Fisher Classifier</p></div>
                         <div id="example">
-                        <!--message=message, features=features, 
-                            probability_of_negative=probability_of_negative, 
-                            probability_of_positive=probability_of_positive,
-                            classification=classification) -->
+                        <!--message = details["message"]
+    features = details["features"]
+    bayesclassification = details["Thomas"]
+    fisherclassification = details["Ronald"] -->
                             <p>{{message}}</p>
-                            {%for key, value in features.iteritems() %}
-                            <span id="key"><p>{{key}}</p></span>
+                            {%for feature in features %}
+                            <span id="key"><p>{{feature}}</p></span>
                             {% endfor %}
-                            <p>{{probability_of_positive}}% positive<br>
-                               {{probability_of_negative}}% negative</p>
-                            <p>{{classification}}</p>
+                            <p>{{fisherclassification}}</p>
                         </div>
                     </div>
                     <div class="unit-50 classifier" id="Thomas">
                         <div class="title-box"><p class="lead">The Bayes Classifier</p></div>
                         <div id="example">
-                        <!--message=message, features=features, 
-                            probability_of_negative=probability_of_negative, 
-                            probability_of_positive=probability_of_positive,
-                            classification=classification) -->
                             <p>{{message}}</p>
-                            {%for key, value in features.iteritems() %}
-                            <span id="key"><p>{{key}}</p></span>
+                            {%for feature in features %}
+                            <span id="key"><p>{{feature}}</p></span>
                             {% endfor %}
-                            <p>{{probability_of_positive}}% positive<br>
-                               {{probability_of_negative}}% negative</p>
-                            <p>{{classification}}</p>
+                            <p>{{bayesclassication}}</p>
                         </div>
                     </div>
                 </div>

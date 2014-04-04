@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 
 import config
+import setupdata
 
 
 app = Flask(__name__)
@@ -14,20 +15,25 @@ def index():
 
 @app.route("/classifiers")
 def classifiers():
-    # Mock up is based on the fisher classifier
-    message = "Despite the rave reviews, the restaurant was terrible"
-    features = {'rave': 1, 'reviews': 1, 'restaurant': 1, 'terrible': 1, 'despite': 1}
-    probability_of_positive = 0.659065812937*100
-    probability_of_negative = 0.68747796392*100
-    classification = "negative"
+    details = setupdata.comparison("Despite the rave reviews, the restaurant was terrible")
+    message = details["message"]
+    features = details["features"]
+    bayesclassification = details["Thomas"]
+    fisherclassification = details["Ronald"]
     return render_template("classifiers.html", message=message, features=features, 
-                            probability_of_negative=probability_of_negative, 
-                            probability_of_positive=probability_of_positive,
-                            classification=classification)
+                            bayesclassification=bayesclassification, fisherclassification=fisherclassification)
 
 @app.route("/chat")
 def chat():
-    return render_template("chat.html")
+    details = setupdata.stats("Despite the rave reviews, the restaurant was terrible")
+    message = details["message"]
+    features = details["features"]
+    negprobability = details["docprob"]["negative"]
+    posprobability = details["docprob"]["positive"]
+    classification = details["classification"]
+    return render_template("chat.html", message=message, features=features, 
+        negprobability=negprobability, posprobability=posprobability, 
+        classification=classification)
 
 @app.route("/maker")
 def maker():
