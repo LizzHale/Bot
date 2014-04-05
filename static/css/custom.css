@@ -6,6 +6,10 @@
   height: 50px;
 }
 
+h5.classifier-title {
+  color: grey;
+}
+
 div#retrieved {
   display: none;
 }
@@ -14,10 +18,41 @@ div#fisher_details {
   display: none;
 }
 
+div.classifiers {
+  margin-left: 100px;
+}
+
 blockquote {
   padding-left: 50px;
 }
 
+.classifier#Thomas {
+  position: relative;
+  height: 100px;
+}
+
+.classifier#Ronald {
+  position: relative;
+  height: 100px;
+}
+
+.example {
+  width: 50%;
+}
+
+.example > p {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.title-box {
+  border: 1px solid grey;
+  text-align: center;
+  width: 50%;
+  background-color: white;
+}
 li.quote:hover {
   border: 1px solid black;
 }
