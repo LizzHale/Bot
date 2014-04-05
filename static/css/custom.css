@@ -2,6 +2,18 @@
   height: 50px;
 }
 
+a.nav {
+  color: black;
+}
+
+.navbar ul li a:hover {
+  color: #9ECA3B;
+}
+
+a:hover, a:focus {
+  color: #9ECA3B;
+}
+
 .title > div {
   height: 50px;
 }
