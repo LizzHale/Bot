@@ -9,6 +9,28 @@ class TestBotFunctions(unittest.TestCase):
         self.classifier = setupdata.getclassifier()
         self.bot = bot.bot("TestBob", "TestBob", "Bob's Doppleganger", "##hbtestbot", self.classifier)
 
+    def testLaugh(self):
+        incoming = "Knock, Knock"
+
+        out = self.bot.laugh(incoming)
+
+        self.assertEqual(out, "PRIVMSG ##hbtestbot :Who's there?\r\n")
+
+        incoming = "Aida"
+        self.bot.joke = 1
+
+        out = self.bot.laugh(incoming)
+
+        self.assertTrue(out)
+        self.assertEqual(out, "PRIVMSG ##hbtestbot :Aida who?\r\n" )
+
+        incoming = "Aida a sandwich today"
+        self.bot.joke = 2
+
+        out = self.bot.laugh(incoming)
+
+        self.assertTrue(out)
+        self.assertEqual(out, "PRIVMSG ##hbtestbot :That's not very funny.\r\n")
 
     def testPong(self):
         incoming = ["PING", ":verne.freenode.net"]

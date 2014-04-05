@@ -23,7 +23,6 @@ def classifiers():
 def compare():
     message = request.form.get("message")
     details = setupdata.comparison(message)
-    print message
     features = details["features"]
     bayesclassification = details["Thomas"]
     fisherclassification = details["Ronald"]
