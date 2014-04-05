@@ -18,7 +18,7 @@ blockquote {
   padding-left: 50px;
 }
 
-li:hover {
+li.quote:hover {
   border: 1px solid black;
 }
 
