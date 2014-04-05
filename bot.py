@@ -16,7 +16,7 @@ class bot:
             print " ".join(msg[3:]).strip(":")
             print self.joke
             if " ".join(msg[3:]).strip(":")=="Knock, Knock" or self.joke > 0:
-                return self.laugh(" ".join(msg[3:]))
+                return self.laugh(" ".join(msg[3:]).strip(":"))
             else:
                 return self.classification(" ".join(msg[3:]))
 
@@ -61,6 +61,7 @@ class bot:
                 reply = "I'm not sure what to think about that."
                 return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
         else:
+            self.joke = 0
             reply = "What were we talking about?"
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
 
