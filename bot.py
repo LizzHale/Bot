@@ -5,6 +5,7 @@ class bot:
         self.realname = realname
         self.channel = channel
         self.classifier = classifier
+        self.joke = 0
 
     def receive_send(self, msg):
         """ When a message is passed to the bot from the socket, 
@@ -12,7 +13,10 @@ class bot:
         method """
         # TO DO - Perhaps these if statements should be in a dictionary organized by conditions/keys methods/values
         if msg[1]=="PRIVMSG" and msg[2]==self.channel:
-            return self.classification(" ".join(msg[3:]))
+            if " ".join(msg[3:])=="Knock, Knock" or self.joke > 0:
+                return self.laugh(" ".join(msg[3:]))
+            else:
+                return self.classification(" ".join(msg[3:]))
 
         elif msg[1]=="PRIVMSG" and msg[2]==self.nickname:
             senderNick = msg[0].split("!", 1)[0].strip(":")
@@ -29,6 +33,35 @@ class bot:
 
         else:
             return False
+
+    def laugh(self, msg):
+        if msg == "Knock, Knock":
+            print "Knock, Knock"
+            self.joke = 1
+            reply = "Who's there?"
+            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+        elif self.joke == 1:
+            print "Who's there"
+            self.joke = 2
+            reply = msg + "who?"
+            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+        elif self.joke == 2:
+            print "Was it funny"
+            self.joke = 0
+            polarity = self.classifier.classify(msg, default="neutral")
+            if polarity == "positive":
+                reply = "That's hilarious"
+                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+            elif polarity == "negative":
+                reply = "That's not very funny."
+                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+            elif polarity == "neutral":
+                reply = "I'm not sure what to think about that."
+                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+        else:
+            reply = "What were we talking about?"
+            return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+
 
     def classification(self, msg):
         """ Classify the received message and send back a reply """
