@@ -64,6 +64,9 @@
                         </li>
                     </ul>
                 </div>
+                <div id="quote_loading">
+                    {% include 'loading.html' %}
+                </div>
                 <div id="retrieved">
                     {% include 'retrieved.html' %}
                 </div>
@@ -80,10 +83,16 @@
                             <input type="submit" class="btn" value="Submit" />
                         </p>
                     </form>
-                </div>  
+                </div> 
+                <div id="stats_loading">
+                    {% include 'loading.html' %}
+                </div> 
                 <div id="fisher_details">
                     {% include 'stats.html' %}
                 </div>
+                <h3>Resources</h3>
+                <p class="lead">This is where we'll talk about resources<p>
+                <p>Continue talking about the resources here</p>
             </div>
         <div class="unit-10 side"></div>
     </div>
