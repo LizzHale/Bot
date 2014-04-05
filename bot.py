@@ -45,7 +45,7 @@ class bot:
         elif self.joke == 1:
             print "Who's there"
             self.joke = 2
-            reply = msg + "who?"
+            reply = msg + " who?"
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
         elif self.joke == 2:
             print "Was it funny"
