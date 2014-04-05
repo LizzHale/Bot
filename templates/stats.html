@@ -5,8 +5,8 @@
 <blockquote> {{message}} </blockquote>
 <p class="instructions">The fisher classifier found these probabilities for the features: <p>
 {%for feature in features %}
-<span id="key">{{feature}}  negative: {{features[feature]["negative"]}}%   positive: {{features[feature]["positive"]}}%</span>
+<span id="key">{{feature}}<br>negative: {{features[feature]["negative"]}}% | positive: {{features[feature]["positive"]}}%</span>
 {% endfor %}
 <p class="instructions">From these features, the classifier has assigned the following probabilities to your message </p>
-<p>negative: {{negprobability}}% positive: {{posprobability}}%</p>
+<p>negative: {{negprobability}}% | positive: {{posprobability}}%</p>
 <p class="instructions">{{classification}} was the highest probable category for your message</p>

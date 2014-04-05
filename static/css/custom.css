@@ -95,8 +95,19 @@ p {
 
 span#key {
   font-family: 'Apollo W01';
-  font-weight: none;
-  padding-right: 15px;
+  font-weight: bold;
+  padding: 15px;
+  margin: 5px;
+  align-content: center;
+  color: white;
+  background: rgba(141, 138, 138, 0.6);
+  display: inline-block;
+  text-align: center;
+}
+
+div#features {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 
