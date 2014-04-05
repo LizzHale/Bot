@@ -67,6 +67,23 @@
                 <div id="retrieved">
                     {% include 'retrieved.html' %}
                 </div>
+                <h3>More About the Fisher Classifier</h3>
+                <div id="fisher_submit">
+                    <form method="post" action="" class="forms">
+                        <fieldset>
+                            <legend>Type out a message to see how the classifier determines the category</legend>
+                            <label>
+                                <textarea name="user-about" class="width-100" rows="5"></textarea>
+                            </label>
+                        </fieldset>
+                        <p>
+                            <input type="submit" class="btn" value="Submit" />
+                        </p>
+                    </form>
+                </div>  
+                <div id="fisher_details">
+                    {% include 'stats.html' %}
+                </div>
             </div>
         <div class="unit-10 side"></div>
     </div>

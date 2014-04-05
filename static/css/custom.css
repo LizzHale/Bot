@@ -10,12 +10,22 @@ div#retrieved {
   display: none;
 }
 
+div#fisher_details {
+  display: none;
+}
+
 blockquote {
   padding-left: 50px;
 }
 
 li:hover {
   border: 1px solid black;
+}
+
+legend {
+  font-family:'UniversLTW01-53Extended';
+  font-weight: none;
+  font-size: 15px;
 }
 
 .instructions {
@@ -47,6 +57,8 @@ blockquote {
 textarea {
   font-family: 'Apollo W01';
   font-weight: none;
+  font-style: italic;
+  font-size: 15px;
 }
 
 small {
