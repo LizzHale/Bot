@@ -27,7 +27,8 @@
             <nav class="navbar navbar-right">
                 <ul>
                     <li><a class="nav" href="{{ url_for('chat') }}"/>Chat</a></li>
-                    <li><a class="nav" href="{{ url_for('classifiers') }}"/><span>About This Project<span></a></li>
+                    <li><a class="nav" href="{{ url_for('about') }}">About This Project</a></li>
+                    <li><a class="nav" href="{{ url_for('classifiers') }}"/><span>Compare The Classifiers<span></a></li>
                     <li><a class="nav" href="{{ url_for('maker') }}">Meet the Maker</a></li>
                 </ul>
             </nav>
@@ -37,10 +38,7 @@
     <div class="units-row chat">
         <div class="unit-10 side"></div>
             <div class="unit-80 content">
-                <h3>The Project</h3>
-                <p class="lead">This is where we'll introduce the project<p>
-                <p>Continue talking about the project here</p>
-                <h3>The Classifiers Used</h3>
+                <h3>About the Classifiers</h3>
                 <p class="lead">The Naive Bayes classifier</p>
                 <p>Talk about the classifier here...</p>
                 <p class="lead">The Fisher classifier</p>
@@ -90,9 +88,6 @@
                 <div id="fisher_details">
                     {% include 'stats.html' %}
                 </div>
-                <h3>Resources</h3>
-                <p class="lead">This is where we'll talk about resources<p>
-                <p>Continue talking about the resources here</p>
             </div>
         <div class="unit-10 side"></div>
     </div>
