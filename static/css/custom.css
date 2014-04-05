@@ -2,6 +2,10 @@
   height: 50px;
 }
 
+.navbuffer {
+  height: 50px;
+}
+
 a.nav {
   color: black;
 }
@@ -184,12 +188,17 @@ div#features {
   height: 450px;
 }
 
-@media only screen and (max-width: 1330px) {
-
+@media only screen and (max-width: 1500px) {
+  .navbuffer {
+    display: none;
+  }
 }
 @media only screen and (max-width: 780px) {
   .buffer {
     display: none;
+  }
+  .navbuffer {
+    display: block;
   }
 }
 
@@ -200,7 +209,11 @@ div#features {
   .side {
     display: none;
   }
+  .navbuffer {
+    display: block;
+  }
 }
+
 
 #loading_container{
     width: 100px;
