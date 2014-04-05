@@ -13,6 +13,8 @@ class bot:
         method """
         # TO DO - Perhaps these if statements should be in a dictionary organized by conditions/keys methods/values
         if msg[1]=="PRIVMSG" and msg[2]==self.channel:
+            print msg[3:]
+            print self.joke
             if " ".join(msg[3:])=="Knock, Knock" or self.joke > 0:
                 return self.laugh(" ".join(msg[3:]))
             else:
