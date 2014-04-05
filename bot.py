@@ -31,8 +31,12 @@ class bot:
             return False
 
     def classification(self, msg):
+        """ Classify the received message and send back a reply """
+
         polarity = self.classifier.classify(msg, default="neutral")
         features = self.classifier.getfeatures(msg)
+        # Messages with less than 3 features are not as accurate. Get more information for the 
+        # chat participant
         if len(features) < 3:
             reply = "Tell me more..."
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)

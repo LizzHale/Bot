@@ -52,6 +52,8 @@ def getclassifier():
     return classifier
 
 def stats(msg):
+    """ Returns a dictionary with the classification information for the received message for use in the browser """
+
     ronald = getclassifier()
     statsDict = {"features": {}, "message": msg, }
 
@@ -74,6 +76,8 @@ def stats(msg):
     return statsDict
 
 def comparison(msg):
+    """ Returns a dictionary with the classifications a the received message from both of the classifiers for comparison """
+    
     ronald = classy.fisherclassifier(normalize.getwords)
     thomas = classy.naivebayes(normalize.getwords)
     featureDict = ronald.getfeatures(msg)
