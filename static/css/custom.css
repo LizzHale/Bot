@@ -6,6 +6,22 @@
   height: 50px;
 }
 
+.feature {
+  font-family: 'Apollo W01';
+  color: black;
+}
+
+#both {
+  font-family: 'Apollo W01 Semi Bold';
+  text-align: center;
+  font-size: 20px;
+}
+
+#category {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
 h5.classifier-title {
   color: grey;
 }
@@ -41,9 +57,10 @@ blockquote {
 }
 
 .example > p {
+  font-family:'UniversLTW01-53Extended';
   margin-top: 20px;
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   text-transform: uppercase;
 }
 
@@ -128,7 +145,7 @@ p {
   font-weight: none;
 }
 
-span#key {
+span.key {
   font-family: 'Apollo W01';
   font-weight: bold;
   padding: 15px;
