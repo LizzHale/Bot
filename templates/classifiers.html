@@ -43,14 +43,19 @@
         <div class="unit-10 side"></div>
             <div class="unit-80 content">
                 <h3>About the Classifiers</h3>
-                <p class="lead">The Naive Bayes classifier</p>
-                <p>Talk about the classifier here...</p>
+                <p class="lead">What is a classifier?</p>
+                <p>A classifier is a system that can predict, based on training input, the classification or category of previously unknown input. In this project, when you type a message in the chatroom, Bob, the IRC bot, uses his classifier to determine the sentiment category (whether the message is "positive" or "negative") even though he has likely never seen your message before. The training input used in this classifier is a corpus of movie reviews categorized as either positive or negative. The first classifier used was the naive Bayes which produced a 60% accuracy rate. This means that Bob could accurately determine the sentiment of your chatroom message 60% of the time. Bob is currently running a Fisher classifier with 65% accuracy.</p>
+                <p>To determine the category of a chatroom message, the classifier first extracts the meaningful features from the text. In machine learning, a feature is a measurable property of the categories being classified. This project uses words as features, but it's quite possible to use any measureable property, for instance, length of a sentence or punctuation. In order to extract the words from the text, considerable pre-processing had to be done to strip other data, such as email addresses and numbers, from the sentences. In addition, stopwords, words with little or no semantic value, had to be removed.</p>
+                <p>Once the features are extracted, the classifiers go to work.</p>
+                <p class="lead">The naive Bayes classifier</p>
+                <p>The naive Bayes classifier is a probabilistic classifier that assumes that the value of a feature is unrelated to the presence or absence of any other feature. For each category, the classifier multiplies the category probability by the document probability to determine the overall probability of the message. The category probability is the number of featues in the category divided by the total number of features. To determine the document probability, the classifier takes each feature and divides the number of times the feature appears in the category by the number of features in the category. It then mulplies these results together to return the document probability. The final result is the category with the greatest overall probability.</p>
                 <p class="lead">The Fisher classifier</p>
-                <p>Talk about the classifier here...</p>
+                <p>Unlike the naive Bayes, the Fisher classifier takes into account the other features present in the input to arrive at a classification. Its process is much like the naive Bayes but it goes one step further and compares the overall probability for a category to a random set of features. Its final result is the probability that the message is not a random set of features. This can help to offset an outlying feature, for instance, if there is one very positive word in an otherwise negative sentence. </p>
                 <h3>Compare the Classifiers</h3>
                 <div id="choices">
                     <p class="instructions">Click on an example below to see how the classifiers stack up against these Michiko Kakutani book reviews.</p>
                     <ul class="forms-list">
+                        <!-- TO DO why are these sentences interesting? -->
                          <li class="quote">
                             <blockquote class="examples">Although some chapters in this book start with annoying passages detailing the Gardener's ecological credo, Ms. Atwood largely refrains from the sort of proselytizing that tarnished her earlier ventures into science fiction.</blockquote>
                                     <small>Michiko Kakutani</small> &mdash; <cite>"A Familiar Cast of Fighters in the Final Battle for the Sould of the Earth" The New York Times 14 Sept. 2009</cite><br><br></label>

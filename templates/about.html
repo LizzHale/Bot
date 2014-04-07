@@ -39,11 +39,17 @@
         <div class="unit-10 side"></div>
             <div class="unit-80 content">
                 <h3>The Project</h3>
-                <p class="lead">This is where we'll introduce the project<p>
-                <p>Continue talking about the project here</p>
+                <p class="lead">Who is Bob?</p>
+                <p>Wilhelm "Bobnut" DeKokosnoot (aka Bob) is a chat bot that uses natural language processing and machine learning to respond to the contextual polarity of the messages in a chatroom. Bob appears as any other user to chatroom participants. In order to do this, a client socket had to be built to send and receive messages using the Internet Chat Relay (IRC) protocol.</p>
+                <p>Programmed in Python, Bob uses a probabilistic classifier to categorize the polarity of the messages in the chatroom. It is currently trained on a corpus of movie reviews provided by Cornell University. The first classifier built was the naive Bayes which produced a 60% accuracy rate. Bob is now running on a Fisher classifier with 65% accuracy. For a more detailed description of the differences between the two classifiers, please see <a class="nav" href="{{ url_for('classifiers') }}">this page</a>.</p>
+                <p class="lead">The Website</p>
+                <p>The website you are on is running on Flask, deployed on heroku, and is monitored by New Relic analytics. Its clean, modern look is made easy using the Kube CSS framework as well as custom details.</p> 
+                <p class="lead">Chat with Bob</p>
+                <p>To chat with Bob, visit <a class="nav" href="{{ url_for('chat') }}">the chat page</a>. The chat client you will be using is powered by KiwiIRC. Choose an available nickname and click "start". Bob will be there to greet you and you can begin chatting with him. As you send Bob messages, he will respond to their sentiment. Bob loves a good knock knock joke. Be sure to tell him one or two while chatting.</p>
+                <p>Next Steps</p>
                 <h3>Resources</h3>
-                <p class="lead">This is where we'll talk about resources<p>
-                <p>Continue talking about the resources here</p>
+                <p class="lead">Websites, projects, and tutorials that helped in making the bot<p>
+                <p><a class="nav" href="http://www.cs.cornell.edu/people/pabo/movie-review-data/">Polarity Dataset v2.0</a></p>
             </div>
         <div class="unit-10 side"></div>
     </div>

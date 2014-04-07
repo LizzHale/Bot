@@ -24,6 +24,7 @@ a:hover, a:focus {
 
 .feature {
   font-family: 'Apollo W01';
+  font-size: 16px;
   color: black;
 }
 
@@ -127,14 +128,14 @@ h5 {
 
 blockquote {
   font-family: 'Apollo W01';
-  font-size: 15px;
+  font-size: 16px;
 }
 
 textarea {
   font-family: 'Apollo W01';
   font-weight: none;
   font-style: italic;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 small {
@@ -154,15 +155,18 @@ cite {
 .nav {
   font-family: 'Apollo W01';
   font-weight: none;
+  font-size: 16px;
 }
 
 p {
   font-family: 'Apollo W01';
+  font-size: 16px;
   font-weight: none;
 }
 
 span.key {
   font-family: 'Apollo W01';
+  font-size: 16px;
   font-weight: bold;
   padding: 15px;
   margin: 5px;
