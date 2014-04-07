@@ -34,7 +34,7 @@ class TestNormalizeFunctions(unittest.TestCase):
     def testRemoveEmails(self):
         text = "you can email me at lizzhale@mac.com"
 
-        t = normalize.remove_links(text)
+        t = normalize.remove_emails(text)
 
         self.assertEqual(t, "you can email me at ")
 

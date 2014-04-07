@@ -16,7 +16,7 @@ def remove_links(text):
 
 # TO DO - remove emails
 def remove_emails(text):
-    pass
+    return re.sub(r"([\w\-\.]+@(\w[\w\-]+\.)+[\w\-]+)", "", text)
 
 def remove_digits(text):
     return re.sub(r"[0-9]", " ", text)
