@@ -60,9 +60,9 @@ def expand_contractions(text):
 def clean(text):
     # convert_unicode(text)
     # remove_links(text)
-    remove_emails(text)
-    remove_digits(text)
-    lowered = convert_lowercase(text)
+    nocontact = remove_emails(text)
+    numberless = remove_digits(nocontact)
+    lowered = convert_lowercase(numberless)
     expanded = expand_contractions(lowered)
     no_punc = remove_punctuation(expanded)
     whited = normalize_whitespace(no_punc)
