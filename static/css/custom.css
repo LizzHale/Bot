@@ -23,6 +23,8 @@ a:hover, a:focus {
 }
 
 #headshot {
+  display: block;
+  margin: auto;
   border-radius: 500px;
   border: 2px solid grey;
 }
