@@ -3,9 +3,11 @@
 import re
 
 from nltk.tokenize import WhitespaceTokenizer
+from random import randint
 
 import contractions
 import stopwords
+from responses import sayit
 # TO DO - convert unicode to ascii
 def convert_unicode(text):
     pass
@@ -88,6 +90,13 @@ def getwords(doc):
     # Return the unique set of words only
     return dict([(w,1) for w in words])
     
+def response(command):
+    if sayit.get(command):
+        # generate random index range 0 to the length of the command list
+        index = randint(0, len(sayit.get(command))-1)
+        return sayit[command][index]
+    else:
+        return "Sorry, could you repeat that?"
 
 if __name__ == '__main__':
     pass

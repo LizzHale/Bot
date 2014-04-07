@@ -1,4 +1,4 @@
-from normalize import clean
+from normalize import clean, response
 
 class bot:
     def __init__(self, nickname, identity, realname, channel, classifier):
@@ -31,8 +31,8 @@ class bot:
         elif msg[1]=="JOIN" and msg[2]==self.channel:
             joinerNick = msg[0].split("!", 1)[0].strip(":")
             if not joinerNick == self.nickname:
-                reply = "Hello, %s! Seen any good movies lately?" % joinerNick
-                return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
+                reply = response("greet")
+                return "PRIVMSG %s :Hello, %s! %s\r\n" % (self.channel, joinerNick, reply)
 
         else:
             return False
@@ -79,15 +79,15 @@ class bot:
             # TO DO - create multiple replies for positive and negative that the 
             # bot can choose at random. 
             if polarity == "positive":
-                reply = "Your message was positive"
+                reply = response("positive")
                 return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
 
             elif polarity == "negative":
-                reply = "Your message was negative"
+                reply = response("negative")
                 return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
             # TO DO - Use this to continue to train the bot: 
             elif polarity == "neutral":
-                reply = "Is that a bad thing or a good thing?"
+                reply = response("neutral")
                 return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
                 
 

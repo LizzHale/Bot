@@ -13,7 +13,7 @@ app.config.from_object(config)
 
 @app.route("/")
 def index():
-    return redirect(url_for("classifiers"))
+    return redirect(url_for("about"))
 
 @app.route("/classifiers")
 def classifiers():
