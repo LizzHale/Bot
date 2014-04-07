@@ -1,4 +1,7 @@
 stopwords = ['i',
+'mr',
+'mrs',
+'ms',
 'me',
 'my',
 'myself',
