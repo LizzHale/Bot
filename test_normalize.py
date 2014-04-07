@@ -115,6 +115,7 @@ class TestNormalizeFunctions(unittest.TestCase):
         text4 = "Fare thee well, for ne'er shall I return."
         text2 = "DO remember to contact me at Lizzhale@mac.com"
         text3 = "It was rated 101 out of 3000 movies."
+        text5 = "Mr. Bunny was very surprised by the outcome."
 
         t = normalize.clean(text)
 
@@ -133,6 +134,10 @@ class TestNormalizeFunctions(unittest.TestCase):
 
         self.assertEqual(t, "it was rated out of movies")
 
+        t = normalize.clean(text5)
+
+        self.assertEqual(t, "bunny was very surprised by the outcome")
+
     def testTokenize(self):
         text = "fare thee well for never shall i return"
 
@@ -147,7 +152,7 @@ class TestNormalizeFunctions(unittest.TestCase):
         d = normalize.getwords(text)
 
         self.assertIs(type(d), dict)
-        self.assertDictEqual({'building': 1, 'entire': 1, 'story': 1, 'suffocating': 1, 'extracts': 1, 'sense': 1, 'pinteresque': 1, 'production': 1, 'suspense': 1, 'dread': 1, 'although': 1, 'mr': 1, 'airless': 1, 'delillo': 1, 'considerable': 1, 'something': 1}, d)
+        self.assertDictEqual({'building': 1, 'entire': 1, 'story': 1, 'suffocating': 1, 'extracts': 1, 'sense': 1, 'pinteresque': 1, 'production': 1, 'suspense': 1, 'dread': 1, 'although': 1, 'airless': 1, 'delillo': 1, 'considerable': 1, 'something': 1}, d)
 
 if __name__ == '__main__':
         unittest.main()
