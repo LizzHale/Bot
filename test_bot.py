@@ -10,10 +10,17 @@ class TestBotFunctions(unittest.TestCase):
         self.bot = bot.bot("TestBob", "TestBob", "Bob's Doppleganger", "##hbtestbot", self.classifier)
 
     def testLaugh(self):
+        self.bot.joke = 0
         incoming = "Knock, Knock"
 
         out = self.bot.laugh(incoming)
 
+        self.assertEqual(out, "PRIVMSG ##hbtestbot :Who's there?\r\n")
+
+        self.bot.joke = 0
+        incoming = "knock knock "
+
+        out = self.bot.laugh(incoming)
         self.assertEqual(out, "PRIVMSG ##hbtestbot :Who's there?\r\n")
 
         incoming = "Aida"

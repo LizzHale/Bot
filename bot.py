@@ -1,3 +1,5 @@
+from normalize import clean
+
 class bot:
     def __init__(self, nickname, identity, realname, channel, classifier):
         self.nickname = nickname
@@ -13,10 +15,11 @@ class bot:
         method """
         # TO DO - Perhaps these if statements should be in a dictionary organized by conditions/keys methods/values
         if msg[1]=="PRIVMSG" and msg[2]==self.channel:
-            if " ".join(msg[3:]).strip(":")=="Knock, Knock" or self.joke > 0:
-                return self.laugh(" ".join(msg[3:]).strip(":"))
+            message = (" ").join(msg[3:]).strip(":")
+            if clean(message)=="knock knock" or self.joke > 0:
+                return self.laugh(message)
             else:
-                return self.classification(" ".join(msg[3:]))
+                return self.classification(message)
 
         elif msg[1]=="PRIVMSG" and msg[2]==self.nickname:
             senderNick = msg[0].split("!", 1)[0].strip(":")
@@ -35,17 +38,15 @@ class bot:
             return False
 
     def laugh(self, msg):
-        if msg == "Knock, Knock":
+        if clean(msg) == "knock knock":
             self.joke = 1
             reply = "Who's there?"
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
         elif self.joke == 1:
-            print "Who's there"
             self.joke = 2
             reply = msg + " who?"
             return "PRIVMSG %s :%s\r\n" % (self.channel, reply)
         elif self.joke == 2:
-            print "Was it funny"
             self.joke = 0
             polarity = self.classifier.classify(msg, default="neutral")
             if polarity == "positive":
