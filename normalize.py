@@ -60,8 +60,8 @@ def expand_contractions(text):
 def clean(text):
     # convert_unicode(text)
     # remove_links(text)
-    # remove_emails(text)
-    # remove_digits(text)
+    remove_emails(text)
+    remove_digits(text)
     lowered = convert_lowercase(text)
     expanded = expand_contractions(lowered)
     no_punc = remove_punctuation(expanded)
