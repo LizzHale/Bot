@@ -19,7 +19,7 @@ def remove_emails(text):
     pass
 
 def remove_digits(text):
-    return ""
+    return re.sub(r"[0-9]", " ", text)
 
 def remove_stopwords(list):
     sw = stopwords.stopwords

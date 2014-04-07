@@ -45,7 +45,7 @@ class TestNormalizeFunctions(unittest.TestCase):
 
         self.assertNotIn("101", t)
         self.assertNotIn("3000", t)
-        self.assertEqual(t, "It was rated out of movies")
+        self.assertEqual(t, "It was rated     out of      movies.")
 
     def testRemoveStopwords(self):
         testList = ["those", "golden", "hills", "are", "further", "than", "you", "think"]
