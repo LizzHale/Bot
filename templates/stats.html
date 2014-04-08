@@ -3,7 +3,7 @@
         classification=classification -->
 <p class="instructions">You typed: </p>
 <blockquote> {{message}} </blockquote>
-<p class="instructions">The fisher classifier found these probabilities for the features: <p>
+<p class="instructions">The fisher classifier found these frequencies for the features: <p>
 {%for feature in features %}
 <span class="key"><span class="feature">{{feature}}</span><br>negative: {{features[feature]["negative"]}}% | positive: {{features[feature]["positive"]}}%</span>
 {% endfor %}
