@@ -50,8 +50,19 @@
                 <p class="lead">Preprocessing<p>
                 <p>To determine the category of a chatroom message, the classifier first extracts the meaningful features from the text. In machine learning, a feature is a property of the categories being classified. This project uses words as features, but it's quite possible to use any measureable property, for instance, length of a sentence or punctuation. In order to extract the words from the text, considerable pre-processing had to be done to strip other data, such as email addresses and numbers, from the sentences. In addition, stopwords, words with little or no semantic value, had to be removed.</p>
                 <p>Once the features are extracted, the classifiers go to work.</p>
-                <p class="lead">The Website</p>
-                <p>The website you are on is running on Flask, deployed on Heroku, and is monitored by New Relic analytics. Its clean, modern look was designed using the Kube CSS framework as well as custom elements. </p> 
+                <p class="lead">Technology Used</p>
+                <ul>
+                    <li><p>Python</p></li>
+                    <li><p>Flask</p></li>
+                    <li><p>PostgreSQL</p></li>
+                    <li><p>SQLAlchelmy</p></li>
+                    <li><p>HTML</p></li>
+                    <li><p>Jinja</p></li>
+                    <li><p>Kube CSS Framework with custom elements</p></li>
+                    <li><p>JavaScript</p></li>
+                    <li><p>jQuery and Ajax<p></li>
+                    <li><p>Deployed on Heroku and monitored using New Relic</p></li>
+                </ul>
                 <p class="lead">Chat with Bob</p>
                 <p>To chat with Bob, visit <a class="nav" href="{{ url_for('chat') }}">the chat page</a>. The chat client you will be using is powered by KiwiIRC. Choose an available nickname and click "start". Bob will be there to greet you and you can begin chatting with him. As you send Bob messages, he will respond to their sentiment. Bob loves a good knock knock joke. Be sure to tell him one or two while chatting.</p>
                 <p class="lead">Next Steps</p>
