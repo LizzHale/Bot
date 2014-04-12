@@ -66,7 +66,7 @@ class classifier:
 
     def totalcount(self):
         """ Returns the total number of items in all categories """
-        # returns a tuple. (4859.0,) Why?
+        # returns a tuple. (4859.0,)
         total = session.query(func.sum(categorycount.count)).one()
         if total:
             return total[0]
@@ -212,7 +212,7 @@ class fisherclassifier(classifier):
         """ Checks if the calculation fits a chi-squared distribution """
         # divide the fisher score by 2.0
         m = chi / 2.0
-        # e (approx. 2.718281828) ** -m
+        # math.exp(-m) is e(approx. 2.718281828) ** -m
         s = math.exp(-m)
         term = math.exp(-m)
         # Remember that df is the len(features)*2 and // returns the floored quotient
