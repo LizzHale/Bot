@@ -78,8 +78,8 @@ def stats(msg):
 def comparison(msg):
     """ Returns a dictionary with the classifications a the received message from both of the classifiers for comparison """
     
-    ronald = classy.fisherclassifier(normalize.getwords)
-    thomas = classy.naivebayes(normalize.getwords)
+    ronald = classy.FisherClassifier(normalize.get_words)
+    thomas = classy.NaiveBayes(normalize.get_words)
     featureDict = ronald.getfeatures(msg)
 
     comparisonDict = {"message": msg}

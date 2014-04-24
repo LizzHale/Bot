@@ -7,16 +7,16 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.sql import func
 
 import config
-from tables import featurecount, session, categorycount
+from tables import FeatureCount, session, CategoryCount
 
 
-class classifier:
-    def __init__(self, getfeatures,filename=None):
+class Classifier(object):
+    def __init__(self, get_features,filename=None):
 
         self.thresholds={}
         # This is the function used to clean and tokenize the data. 
         # getfeatures will return a dictionary of the unique set of words
-        self.getfeatures=getfeatures
+        self.getfeatures=get_features
         # For the fisher classifier
         self.minimums={}
         # The following lines are no longer needed with a database. 
@@ -28,46 +28,51 @@ class classifier:
     def incf(self,f,cat):
         """ Increase the count of the feature/category pair """
         # If the query returns nothing, it will be an empty list (falsey)
-        fc = session.query(featurecount).filter_by(feature=f, category=cat).all()
+        fc = session.query(FeatureCount).filter_by(feature=f, category=cat).all()
         if fc:
             fc[0].count += 1
         else:
             # If fc is false, create a new instance in the database for the feature and category
-            new = featurecount(feature=f, category=cat, count=1)
+            new = FeatureCount(feature=f, category=cat, count=1)
             session.add(new)
 
     def incc(self,cat):
         """ Increases the count of the category """
 
-        cc = session.query(categorycount).filter_by(category=cat).all()
+        cc = session.query(CategoryCount).filter_by(category=cat).all()
         if cc:
             cc[0].count += 1
         else:
-            new = categorycount(category=cat, count=1)
+            new = CategoryCount(category=cat, count=1)
             session.add(new)
 
     def fcount(self,f,cat):
         """ Returns the number of times a feature has appeared in a category """
 
-        feature = session.query(featurecount).filter_by(feature=f, category=cat).all()
+        feature = session.query(FeatureCount).filter_by(feature=f, category=cat).all()
         if feature:
             return feature[0].count
         else:
             return 0
     
-    def catcount(self,cat):
+    def cat_count(self,cat):
         """ Returns the total number of items in a category """
 
-        category = session.query(categorycount).filter_by(category=cat).all()
-        if category:
-            return category[0].count
-        else:
+        try:
+            category = session.query(CategoryCount).filter_by(category=cat).one()
+            return category.count
+        except:
             return 0
+        # category = session.query(categorycount).filter_by(category=cat).all()
+        # if category:
+        #     return category[0].count
+        # else:
+        #     return 0
 
-    def totalcount(self):
+    def total_count(self):
         """ Returns the total number of items in all categories """
         # returns a tuple. (4859.0,)
-        total = session.query(func.sum(categorycount.count)).one()
+        total = session.query(func.sum(CategoryCount.count)).one()
         if total:
             return total[0]
         else:
@@ -78,7 +83,7 @@ class classifier:
         """ Returns the list of all the categories """
 
         category_list = []
-        table = session.query(categorycount).all()
+        table = session.query(CategoryCount).all()
         for each in table:
             category_list.append(str(each.category))
         return category_list
@@ -101,7 +106,7 @@ class classifier:
         self.incc(cat)
 
 
-    def sampletrain(self):  
+    def sample_train(self):  
         """ For testing purposes, a training sample """
 
         self.train('Nobody owns the water.', 'good')
@@ -119,7 +124,7 @@ class classifier:
         # category divided by the total number of items in this category
         return self.fcount(f, cat)/self.catcount(cat)
 
-    def weightedprob(self, f, cat, prf, weight=1.0, ap=0.5):
+    def weighted_prob(self, f, cat, prf, weight=1.0, ap=0.5):
         # Calculate current probability
         basicprob=prf(f, cat)
         # Count the number of times this feature has appeared in 
@@ -129,10 +134,10 @@ class classifier:
         bp = ((weight * ap) + (totals * basicprob))/(weight + totals)
         return bp
 
-    def setthreshold(self,cat,t):
+    def set_threshold(self,cat,t):
         self.thresholds[cat]=t
 
-    def getthreshold(self,cat):
+    def get_threshold(self,cat):
         if cat not in self.thresholds:
             return 1.0
         return self.thresholds[cat]
@@ -151,7 +156,7 @@ class classifier:
 
         # Make sure the probability exceeds threshold * next best
         for cat in probs:
-            if cat==best:
+            if cat == best:
                 continue
             if probs[cat]*self.getthreshold(best)>probs[best]: 
                 return default
@@ -173,28 +178,28 @@ class classifier:
         else:
             return 0
 
-class naivebayes(classifier):
+class NaiveBayes(classifier):
     def docprob(self, item, cat):
         """ Multiply the probabilities of all the features together to give the
         probability the document is in the given category """
 
-        features=self.getfeatures(item)
+        features=self.get_features(item)
         p = 1
         for f in features:
-            p *= self.weightedprob(f, cat, self.fprob)
+            p *= self.weighted_prob(f, cat, self.fprob)
         return p
 
     def prob(self, item, cat):
         """ multiplies the category probability by the document probability """
         # category probability is the total number of features in the category divided by the total number of features in the classifier
-        catprob = self.catcount(cat)/self.totalcount()
+        catprob = self.cat_count(cat)/self.total_count()
 
-        docprob = self.docprob(item, cat)
+        docprob = self.doc_prob(item, cat)
         return docprob * catprob
 
-class fisherclassifier(classifier):
+class FisherClassifier(classifier):
     def cprob(self, f, cat):
-        """ Divde the frequency in this category by the overall frequency to return the probability """
+        """ Divide the frequency in this category by the overall frequency to return the probability """
         # The frequency of this feature in this category
         clf = self.fprob(f, cat)
         if clf == 0: 
@@ -223,14 +228,14 @@ class fisherclassifier(classifier):
         return min(s, 1.0)
 
 
-    def fisherprob(self, item, cat):
+    def fisher_prob(self, item, cat):
         """ Multiplies all the feature probabilities together. Takes the natural log of this result and then multiplies that by -2. 
         This is then fed through the inverse chi-square function to return the probability that the item is not random"""
         # Multiply all the probabilities together
         p = 1
-        features = self.getfeatures(item)
+        features = self.get_features(item)
         for f in features:
-            p *= (self.weightedprob(f, cat, self.cprob))
+            p *= (self.weighted_prob(f, cat, self.cprob))
 
         # Take the natural log and multiply by -2
         fscore = (-2)*math.log(p)
@@ -238,10 +243,10 @@ class fisherclassifier(classifier):
         # Use the inverse chi-square function to get a probability
         return self.invchi2(fscore, len(features)*2)
 
-    def setminimums(self, cat, minim):
+    def set_minimums(self, cat, minim):
         self.minimums[cat] = minim
 
-    def getminimums(self, cat):
+    def get_minimums(self, cat):
         if cat not in self.minimums:
             return 0
         return self.minimums[cat]
@@ -251,9 +256,9 @@ class fisherclassifier(classifier):
         best = default
         maxim = 0.0
         for c in self.categories():
-            p = self.fisherprob(item, c)
+            p = self.fisher_prob(item, c)
             # Make sure it exceeds its minimum
-            if p > self.getminimums(c) and p > maxim:
+            if p > self.get_minimums(c) and p > maxim:
                 best = c
                 maxim = p
         return best

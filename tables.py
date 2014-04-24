@@ -13,7 +13,7 @@ session = scoped_session(sessionmaker(bind=engine,
 Base = declarative_base()
 Base.query = session.query_property()
 
-class featurecount(Base):
+class FeatureCount(Base):
     """ Tracks the feature and category combinations """
 
     __tablename__ = "featurecount" 
@@ -24,7 +24,7 @@ class featurecount(Base):
     category = Column(String(64), nullable=False)
     count = Column(Float, nullable=False)
     
-class categorycount(Base):
+class CategoryCount(Base):
     """ Tracks the features in each category """
 
     __tablename__ = "categorycount"

@@ -1,6 +1,12 @@
 from normalize import clean, response
+# [msg, target, contents]
 
-class bot:
+# Message
+#     target
+#     source
+#     contents
+
+class Bot(object):
     def __init__(self, nickname, identity, realname, channel, classifier):
         self.nickname = nickname
         self.identity = identity
@@ -13,6 +19,8 @@ class bot:
         """ When a message is passed to the bot from the socket, 
         sort the messages and pass them to the appropriate 
         method """
+
+        # TO DO  - put into a dispatch dictionary. and then a finite state machine
         # TO DO - Perhaps these if statements should be in a dictionary organized by conditions/keys methods/values
         if msg[1]=="PRIVMSG" and msg[2]==self.channel:
             message = (" ").join(msg[3:]).strip(":")
@@ -37,6 +45,8 @@ class bot:
         else:
             return False
 
+# reply = Message(src="me", target="whoever", contents="whatever")
+# botsocket.send_reply(reply)
     def laugh(self, msg):
         if clean(msg) == "knock knock":
             self.joke = 1
@@ -97,3 +107,12 @@ class bot:
     def private_message(self, msg, sender):
         reply = "Why are we talking in here?"
         return "PRIVMSG %s :%s\r\n" % (sender, reply)
+
+
+
+# def cmdline_test():
+#     test_bot = bot()
+#     while True:
+#         text = raw_input("> ")
+#         m = Message.parse_from_cmd_line(text)
+#         b.laugh(m)

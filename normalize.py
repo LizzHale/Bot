@@ -76,7 +76,7 @@ def tokenize(string):
     returnlist = tokenizer.tokenize(string)
     return returnlist
 
-def getwords(doc):
+def get_words(doc):
     """ Normalizes and tokenizes the document. Returns a dictionary of the unique words"""
 
     normalized = clean(doc)
