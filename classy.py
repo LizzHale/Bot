@@ -15,8 +15,8 @@ class Classifier(object):
 
         self.thresholds={}
         # This is the function used to clean and tokenize the data. 
-        # getfeatures will return a dictionary of the unique set of words
-        self.getfeatures=get_features
+        # get_features will return a dictionary of the unique set of words
+        self.get_features=get_features
         # For the fisher classifier
         self.minimums={}
         # The following lines are no longer needed with a database. 
@@ -89,16 +89,16 @@ class Classifier(object):
         return category_list
 
     # Takes a document and a category. It uses the 
-    # getfeatures method to break the item into its separate features
+    # get_features method to break the item into its separate features
     # Then calls incf to increase the counts for this category. for every feature
     # finally, it increase the total count for the category.
     def train(self,item,cat):
-        """ For the given item/document, the method calls the getfeatures
+        """ For the given item/document, the method calls the get_features
         function to return the features. Then calls incf method to increase the counts
         for the given category. Lastly, for every feature it increases the total count 
         for the category. """
 
-        features = self.getfeatures(item)
+        features = self.get_features(item)
 
         for f in features:
             self.incf(f,cat)
@@ -118,11 +118,11 @@ class Classifier(object):
     def fprob(self,f,cat):
         """ Returns the probability that a feature is in a category """
 
-        if self.catcount(cat)==0: 
+        if self.cat_count(cat)==0: 
             return 0
         # The total number of times this feature appeared in this
         # category divided by the total number of items in this category
-        return self.fcount(f, cat)/self.catcount(cat)
+        return self.fcount(f, cat)/self.cat_count(cat)
 
     def weighted_prob(self, f, cat, prf, weight=1.0, ap=0.5):
         # Calculate current probability
@@ -178,7 +178,7 @@ class Classifier(object):
         else:
             return 0
 
-class NaiveBayes(classifier):
+class NaiveBayes(Classifier):
     def docprob(self, item, cat):
         """ Multiply the probabilities of all the features together to give the
         probability the document is in the given category """
@@ -197,7 +197,7 @@ class NaiveBayes(classifier):
         docprob = self.doc_prob(item, cat)
         return docprob * catprob
 
-class FisherClassifier(classifier):
+class FisherClassifier(Classifier):
     def cprob(self, f, cat):
         """ Divide the frequency in this category by the overall frequency to return the probability """
         # The frequency of this feature in this category

@@ -78,7 +78,7 @@ class Bot(object):
         """ Classify the received message and send back a reply """
 
         polarity = self.classifier.classify(msg, default="neutral")
-        features = self.classifier.getfeatures(msg)
+        features = self.classifier.get_features(msg)
         # Messages with less than 3 features are not as accurate. Get more information for the 
         # chat participant
         if len(features) < 3:

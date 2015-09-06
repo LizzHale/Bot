@@ -46,9 +46,9 @@ def test(classifier, test_set):
 def getclassifier():
     """ Creates an instance of the classifier """
     # TO DO - set a minimum for both categories. Perhaps lower than 60% for both will return "neutral"
-    classifier = classy.fisherclassifier(normalize.getwords)
-    classifier.setminimums("positive", .60)
-    classifier.setminimums("negative", .60)
+    classifier = classy.FisherClassifier(normalize.get_words)
+    classifier.set_minimums("positive", .60)
+    classifier.set_minimums("negative", .60)
     return classifier
 
 def stats(msg):

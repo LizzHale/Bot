@@ -26,7 +26,7 @@ def bot_socket():
     readbuffer=""
 
     # Instantiate the bot
-    bob = bot.bot(NICK, IDENT, REALNAME, CHANNEL, CLASSIFIER)
+    bob = bot.Bot(NICK, IDENT, REALNAME, CHANNEL, CLASSIFIER)
 
     s=socket.socket()
 
