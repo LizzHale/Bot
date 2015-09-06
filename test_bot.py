@@ -7,7 +7,7 @@ class TestBotFunctions(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestBotFunctions, self).__init__(*args, **kwargs)
         self.classifier = setupdata.getclassifier()
-        self.bot = bot.bot("TestBob", "TestBob", "Bob's Doppleganger", "##hbtestbot", self.classifier)
+        self.bot = bot.Bot("TestBob", "TestBob", "Bob's Doppleganger", "##hbtestbot", self.classifier)
 
     def testLaugh(self):
         self.bot.joke = 0

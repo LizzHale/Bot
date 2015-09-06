@@ -149,7 +149,7 @@ class TestNormalizeFunctions(unittest.TestCase):
     def testGetWords(self):
         text = 'Although Mr. DeLillo extracts considerable suspense from his story, while building a Pinteresque sense of dread, there is something suffocating and airless about this entire production. '
 
-        d = normalize.getwords(text)
+        d = normalize.get_words(text)
 
         self.assertIs(type(d), dict)
         self.assertDictEqual({'building': 1, 'entire': 1, 'story': 1, 'suffocating': 1, 'extracts': 1, 'sense': 1, 'pinteresque': 1, 'production': 1, 'suspense': 1, 'dread': 1, 'although': 1, 'airless': 1, 'delillo': 1, 'considerable': 1, 'something': 1}, d)
