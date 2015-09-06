@@ -158,7 +158,7 @@ class Classifier(object):
         for cat in probs:
             if cat == best:
                 continue
-            if probs[cat]*self.getthreshold(best)>probs[best]: 
+            if probs[cat]*self.get_threshold(best)>probs[best]: 
                 return default
             return best
 
@@ -179,7 +179,7 @@ class Classifier(object):
             return 0
 
 class NaiveBayes(Classifier):
-    def docprob(self, item, cat):
+    def doc_prob(self, item, cat):
         """ Multiply the probabilities of all the features together to give the
         probability the document is in the given category """
 

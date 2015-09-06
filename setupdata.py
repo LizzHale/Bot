@@ -58,15 +58,15 @@ def stats(msg):
     statsDict = {"features": {}, "message": msg, }
 
 
-    features = ronald.getfeatures(msg)
+    features = ronald.get_features(msg)
 
     for key in features:
         negkeyprob = round((ronald.cprob(key, "negative")*100), 3)
         poskeyprob = round((ronald.cprob(key, "positive")*100), 3)
         statsDict["features"][key] = {"negative": negkeyprob, "positive": poskeyprob}
 
-    negmsgprob = round((ronald.fisherprob(msg, "negative")*100), 2)
-    posmsgprob = round((ronald.fisherprob(msg, "positive")*100), 2)
+    negmsgprob = round((ronald.fisher_prob(msg, "negative")*100), 2)
+    posmsgprob = round((ronald.fisher_prob(msg, "positive")*100), 2)
 
 
     statsDict["docprob"] = {"negative": negmsgprob, "positive": posmsgprob}
@@ -80,7 +80,7 @@ def comparison(msg):
     
     ronald = classy.FisherClassifier(normalize.get_words)
     thomas = classy.NaiveBayes(normalize.get_words)
-    featureDict = ronald.getfeatures(msg)
+    featureDict = ronald.get_features(msg)
 
     comparisonDict = {"message": msg}
 
