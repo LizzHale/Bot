@@ -6,7 +6,13 @@ $(document).ready( function(){
         $.ajax({
             url: "/classifiers/compare",
             data: {message:quote},
-            method: "POST"
+            method: "POST",
+            //TODO: redirect to an error page
+            statusCode: {
+              500: function(xhr) {
+                console.log("500 error")
+              }
+            }
         }).done(function(data) {
             console.log("server sent us: " + data);
             $("#retrieved")[0].innerHTML = data;
