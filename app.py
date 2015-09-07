@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 import json
+import logging
 
 import config
 import setupdata
@@ -11,12 +12,7 @@ import setupdata
 app = Flask(__name__)
 app.config.from_object(config)
 
-if not app.debug:
-  import logging
-  from logging import FileHandler
-  file_handler = FileHandler("/var/log/Bot/bot.log")
-  file_handler.setLevel(logging.WARNING)
-  app.logger.addHandler(file_handler)
+logging.basicConfig(filename="/var/log/Bot/bot.log", level=logging.DEBUG)
 
 @app.route("/")
 def index():
@@ -67,4 +63,4 @@ def fivehundred():
     return render_template("500.html")
 
 if __name__ == "__main__":
-    app.run(debug = False)
+    app.run(debug = True)
