@@ -11,6 +11,13 @@ import setupdata
 app = Flask(__name__)
 app.config.from_object(config)
 
+if not app.debug:
+  import logging
+  from logging import FileHandler
+  file_handler = FileHandler("/var/log/Bot/bot.log")
+  file_handler.setLevel(logging.WARNING)
+  app.logger.addHandler(file_handler)
+
 @app.route("/")
 def index():
     return redirect(url_for("about"))
@@ -60,4 +67,4 @@ def fivehundred():
     return render_template("500.html")
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = False)
