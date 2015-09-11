@@ -59,5 +59,4 @@ Unlike the naive Bayes, the Fisher classifier takes into account the other featu
 
 
 ### Resources
-
-    * [Polarity Dataset v2.0](http://www.cs.cornell.edu/people/pabo/movie-review-data/) -- 1000 positive and 1000 negative processed reviews. Introduced in Pang/Lee ACL 2004. Release June 2004
+[Polarity Dataset v2.0](ttp://www.cs.cornell.edu/people/pabo/movie-review-data/) -- 1000 positive and negative processed reviews. Introduced in Pang/Lee ACL 2004. Release June 2004
