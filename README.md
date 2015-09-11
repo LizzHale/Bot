@@ -49,6 +49,8 @@ Unlike the naive Bayes, the Fisher classifier takes into account the other featu
   - DATABASE_URL
   - PORT
   - SECRET_KEY (for the flask app)
+  - HOST (IRC host)
+  - BOT_PORT (the port that Bob will listen on)
   - NICK (IRC nickname)
   - REALNAME (IRC realname)
   - IDENT (IRC identity)
