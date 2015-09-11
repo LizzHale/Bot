@@ -1,93 +1,28 @@
 ### Who is Bob?
 
-<<<<<<< HEAD
 Wilhelm "Bobnut" DeKokosnoot (aka Bob) is a chat bot that uses natural language processing and machine learning to respond to the contextual polarity of the messages in a chatroom. Bob appears as any other user to chatroom participants. In order to do this, a client socket had to be built to send and receive messages using the Internet Chat Relay (IRC) protocol. All messages received through the socket are sent to Bob who sorts them and sends the appropriate output back.
-=======
-    Wilhelm "Bobnut" DeKokosnoot (aka Bob) is a chat bot that uses natural language processing 
-    and machine learning to respond to the contextual polarity of the messages in a chatroom. 
-    Bob appears as any other user to chatroom participants. In order to do this, a client socket 
-    had to be built to send and receive messages using the Internet Chat Relay (IRC) protocol. 
-    All messages received through the socket are sent to Bob who sorts them and sends the 
-    appropriate output back.
->>>>>>> e12d3f0b27d9d8f98bf1a525776b022440d1c881
 
 ### Statistical Classification
 
-<<<<<<< HEAD
 Programmed in Python, Bob uses a machine learning classifier to determine his response. A classifier is a system that can predict, based on training input, the classification or category of previously unknown input. In this project, when you type a message in the chatroom, Bob uses his classifier to determine the sentiment category (whether the message is "positive" or "negative") even though he has likely never seen your message before. The training input used in this classifier is a corpus of movie reviews provided by Cornell University that are categorized as either positive or negative. The first classifier used was the naive Bayes which produced a 60% accuracy rate. This means that could accurately determine the sentiment 80% of the time. Bob is currently running a Fisher classifier with 65% accuracy so he's well on his wa to matching the accuracy of human being!
-=======
-    Programmed in Python, Bob uses a machine learning classifier to determine his response.
-    A classifier is a system that can predict, based on training input, the classification 
-    or category of previously unknown input. In this project, when you type a message in
-    the chatroom, Bob uses his classifier to determine the sentiment category (whether
-    the message is "positive" or "negative") even though he has likely never seen your message 
-    before. The training input used in this classifier is a corpus of movie reviews provided 
-    by Cornell University that are categorized as either positive or negative. The first 
-    classifer used was the naive Bayes which produced a 60% accuracy rate. This means that Bob 
-    could accurately determine the sentiment of your chatroom message 60% of the time. 
-    Interestingly enough, studies show that humans are only accurate at determining sentiment 
-    80% of the time. Bob is currently running a Fisher classifier with 65% accuracy so he's well
-    on his way to matching the accuracy of a human being!
->>>>>>> e12d3f0b27d9d8f98bf1a525776b022440d1c881
 
-### Preprocessing 
+### Preprocessing
 
-<<<<<<< HEAD
 To determine the category of a chatroom, message, the classifier first extracts the meaningful features from the text. In machine learning, a feature is a property of the categories being classified. This project uses words as features, but it's quite possible to use any measurable property, for instance, length of a sentence or punctuation. In order to extract the words from the text, considerable pre-processing had to be done to strip other data, such as email addresses and numbers, from the sentences. In addition, stopwords, words with little or no semantic value, had to be removed.
-=======
-    To determine the category of a chatroom message, the classifier first extracts the meaningful
-    features from the text. In machine learning, a feature is a property of the categories being 
-    classified. This project uses words as features, but it's quite possibel to use any 
-    measureable property, for instance, length of a sentence or punctuation. In order to extract 
-    the words from the text, considerable pre-processing had to be done to strip other data, such
-    as email addresses and numbers, from the sentences. In addition, stopwords, words with little or
-    no semantic value, had to be removed. 
->>>>>>> e12d3f0b27d9d8f98bf1a525776b022440d1c881
 
 ### More About the Classifiers
 
 #### The naive Bayes classifier
 
-<<<<<<< HEAD
 The naive Bayes classifiers is a probabilistic classifier that assumes that the value of a feature is unrelated to the presence or absence of any other feature, meaning that it looks at each feature in isolation to determine the category. Since language does not behave in this way, the naive Bayes classifier can become confused when, say, dealing with negation. For example, phrases like "not amazing" will be difficult for the naive Bayes to deal with.
 
 #### The Fisher classifier
-=======
-        The naive Bayes classifier is a probabilistic classifier that assumes that the value 
-        of a feature is unrelated to the presence or absence of any other feature, meaning that 
-        it looks at each feature in isolation to determine the category. Since language does not 
-        behave in this way, the naive Bayes classifier can become confused when, say, dealing 
-        with negation. For examples, phrases like "not amazing" will be difficult for the naive 
-        Bayes to deal with. 
-
-    The Fisher classifier
-        
-        Unlike the naive Bayes, the Fisher classifier takes into account the other features present
-        in the input to arrive at a classification. Its process is much like the naive Bayes but 
-        it goes one step further by looking at the probability that the combination of the features
-        would appear in a particular category. This can help to offset an outlying feature, 
-        for instance, if there is one very positive word in an otherwise negative sentence. 
->>>>>>> e12d3f0b27d9d8f98bf1a525776b022440d1c881
 
 Unlike the naive Bayes, the Fisher classifier takes into account the other features present in the input to arrive at a classification. Its process is much like the naive Bayes but it goes one step further by looking at the probability that the combination of features would appear in a particular category. This can help to offset an outlying feature, for instance, if there is one very positive word in an otherwise negative sentence.  
 
-<<<<<<< HEAD
-=======
-    - Python
-    - Flask
-    - PostgreSQL
-    - SQLAlchemy
-    - HTML
-    - Jinja
-    - Kube CSS Framework with custom elements
-    - JavaScript
-    - jQuery and Ajax
-    - Deployed on Heroku and monitored using New Relic
->>>>>>> e12d3f0b27d9d8f98bf1a525776b022440d1c881
 
 ### Technology Used
 
-<<<<<<< HEAD
 - Python
 - Flask
 - PostgreSQL
@@ -126,8 +61,3 @@ Unlike the naive Bayes, the Fisher classifier takes into account the other featu
 ### Resources
 
     * [Polarity Dataset v2.0](http://www.cs.cornell.edu/people/pabo/movie-review-data/) -- 1000 positive and 1000 negative processed reviews. Introduced in Pang/Lee ACL 2004. Release June 2004
-=======
-    [Polarity Dataset v2.0](http://www.cs.cornell.edu/people/pabo/movie-review-data/) 
-    1000 positive and 1000 negative processed reviews. 
-    Introduced in Pang/Lee ACL 2004. Release June 2004
->>>>>>> e12d3f0b27d9d8f98bf1a525776b022440d1c881
