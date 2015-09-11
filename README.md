@@ -44,7 +44,7 @@ Unlike the naive Bayes, the Fisher classifier takes into account the other featu
 - Install postgres
 - Create a new database and set the DATABASE_URL environment variable
 - Create the tables by running ``` python tables.py```
-- Seed the database (This take approximately 3 hours) ``` python setupdata.py ```
+- Seed the database (This takes approximately 3 hours) ``` python setupdata.py ```
 - Create and source the .env with the following environment variables:
   - DATABASE_URL
   - PORT
