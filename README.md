@@ -47,7 +47,7 @@ Unlike the naive Bayes, the Fisher classifier takes into account the other featu
 - Seed the database (This takes approximately 3 hours) ``` python setupdata.py ```
 - Create and source the .env with the following environment variables:
   - DATABASE_URL
-  - PORT
+  - PORT (the port that gunicorn will listen on -- default 5000)
   - SECRET_KEY (for the flask app)
   - HOST (IRC host)
   - BOT_PORT (the port that Bob will listen on)
