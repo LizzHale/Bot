@@ -1,3 +1,4 @@
+Another change
 ### Who is Bob?
 
 Wilhelm "Bobnut" DeKokosnoot (aka Bob) is a chat bot that uses natural language processing and machine learning to respond to the contextual polarity of the messages in a chatroom. Bob appears as any other user to chatroom participants. In order to do this, a client socket had to be built to send and receive messages using the Internet Chat Relay (IRC) protocol. All messages received through the socket are sent to Bob who sorts them and sends the appropriate output back.
